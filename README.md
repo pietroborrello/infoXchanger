@@ -1,4 +1,4 @@
-#Specifiche Progetto
+# Specifiche Progetto
 
 Il progetto prevede lo sviluppo di una Web Application che riguarda lo scambio di informazioni personali, attraverso l'uso di QRCode.
 Ogni utente deve essere autenticato e possiede un insieme di dati personali tra cui:
