@@ -1,17 +1,21 @@
 # Specifiche Progetto
 
-Il progetto prevede lo sviluppo di una Web Application che riguarda lo scambio di informazioni personali, attraverso l'uso di QRCode.
-Ogni utente deve essere autenticato e possiede un insieme di dati personali tra cui:
-* Nome, Cognome, Residenza, Data e Luogo di nascita 
-* Numeri Di Telefono, Email, Sito Web, link a Profili Social 
+Il progetto prevede lo sviluppo di una Web Application che riguarda lo scambio di informazioni personali attraverso l'uso di QRCode appositamente generati.
+
+Ogni utente deve essere autenticato per poter condividere sue informazioni e per ricevere quelle di altri utenti. Nel suo profilo può inserire le informazioni personali e, selezionandone un sottoinsieme, chiedere al server di generare un QRCode che le riferisca. In particolare, questo QRCode contiene un token a cui il server stesso ha associato le informazioni di un particolare utente.
+
+L'interfaccia dell'applicazione consente la scannerizzazione dei QRCode per l'accesso ai dati. Quando un QRCode viene scansionato e inviato, il server controlla che il token sia valido, esista, e recupera dalla base di dati le informazioni associate che saranno quindi sempre aggiornate. Le presenta poi in risposta sotto forma di pagina html, eventualmente esportabile come PDF per poter effettuare un salvataggio in locale.
+
+Tra le informazioni figurano:
+* Nome, Cognome, Residenza, Data e Luogo di nascita
+* Numeri Di Telefono, Email, Sito Web, link a Profili Social
 * Codice Fiscale, Numero di Carta d'Identità
 * Numero di Patente, Codice e Compagnia Assicurativa, targa Automobile
-* Posizione in tempo reale
 * Altezza, Peso, Taglia, Gruppo Sanguigno
 
-L'utente può generare un QRCode che autorizzi l'accesso ad un sottoinsieme dei propri dati personali, selezionando quali voglia condividere. Il QRCode contiene un codice, che rappresenta un token, da presentare al server che ne verifica la validità e risponde presentando i dati richiesti. Il QRCode garantisce, nel tempo, l'accesso ai dati dinamicamente, non solo al contenuto nel momento in cui viene richiesto. Perciò se i dati dovessero venire aggiornati dall'utente di origine, l'utente destinatario avrebbe comunque accesso al contenuto aggiornato.
-L'interfaccia dell'applicazione consente la scannerizzazione dei QRCode per l'accesso ai dati. Il codice ottenuto dal QRCode viene poi inviato al Server per la richiesta di accesso.
-L'applicazione presenta all'utente una lista degli altri utenti per cui ha accesso ai dati, consentendone la visualizzazione, ed il salvataggio in locale.
-Il profilo di un utente conosciuto ne contiene i dati, divisi per categorie, e può essere condiviso ancora attraverso l'uso di un QRCode ad un utente terzo, fatta eccezione per la posizione in tempo reale. Tale posizione, se accessibile, è visualizzata su di una mappa, quando richiesta. 
+Inoltre ogni utente, oltre alla lista delle proprie informazioni, possiede la lista dei QRCode scansionati, con le rispettive informazioni, e la lista degli utenti che hanno richiesto le informazioni dell'utente stesso, attraverso QrCode da lui generati.
+Il profilo di un utente conosciuto ne contiene i dati, divisi per categorie, e può essere condiviso ancora attraverso l'uso di un QRCode ad un utente terzo.
 
+Tutte le informazioni personali, e tutti i token, sono salvati in una base di dati lato server. Il server mantiene una tabella a due colonne [token (che contiene l'informazione dell'utente a cui è riferito), utente_che_lo_ha_scansionato] e invia una notifica all’utente interessato ogni volta che un altro utente chiede la scansione di un token e la coppia non è nella tabella.
 
+All’atto della registrazione è richiesto nome utente, password, email che deve essere valida, controllo effettuato inviando un codice di accesso. E' inoltre possibile registrarsi attraverso Facebook o servizi analoghi di autenticazione.
