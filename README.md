@@ -36,6 +36,8 @@ Gli utenti hanno la possibilità di dismettere QRCode che avevano generato chied
 
 Viene implementato un meccanismo di autenticazione degli utenti. All’atto della registrazione è richiesto nome utente, password, email che deve essere valida, controllo effettuato inviando un codice di accesso. E' inoltre possibile registrarsi attraverso Facebook o servizi analoghi di autenticazione. Per accedere ai servizi dell'applicazione un utente deve registrarsi inserendo almeno un'email, con cui può essere identificato. Non c'è necessità di altri dati per usare il servizio.
 
+Se la registrazione viene effettuata tramite servizi esterni (Facebook o Google), l'applicazione richiede a tali servizi i dati dell'utente che possiedono per popolare automaticamente il profilo con dei dati iniziali. L'interazione avviene tramite chiamate REST al Facebook Graph o alle Google APIs.
+
 Ad un utente non registrato l'applicazione non offre alcun servizio, presenta solo una HomePage con un form per la registrazione e una spiegazione dei servizi offerti dal sito stesso.
 
 Un utente con i privilegi da ammistratore ha la possibilità di eseguire, oltre alle normali funzionalità, operazioni sulla base di dati, tra cui cancellare utenti o informazioni che potrebbero essere inappropriate.
