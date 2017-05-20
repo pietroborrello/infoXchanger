@@ -25,6 +25,9 @@ module NavigationHelpers
     when /^the users page$/
       '/users'
 
+    when /^the myprofile page$/
+      '/users'
+
     when /^the user (.*) profile page$/
       '/users/'+User.find_by(:email => $1).id.to_s
 
