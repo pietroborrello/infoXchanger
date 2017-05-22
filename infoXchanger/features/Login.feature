@@ -8,8 +8,8 @@ Scenario: User Successfully Logs in
  And I am on the home page
  And I am not authenticated
  When I log in
- Then I should be on the home page
- And I should see "Logged in"
+ Then I should be on the users_myprofile page
+ And I should see "Signed in successfully."
 
  Scenario: User fails to Log in
   Given I am not a registered user
