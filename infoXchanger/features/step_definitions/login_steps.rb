@@ -11,7 +11,7 @@ When /^I register as (.+), (.+)$/ do |email, password|
 end
 
 Given /^I am a registered user$/ do
-  @user = User.create!(:email => 'user@user.com', :password => 'useruser', :password_confirmation => 'useruser')
+  @user = User.create!(:first_name => 'user', :last_name => 'user', :email => 'user@user.com', :password => 'useruser', :password_confirmation => 'useruser')
 end
 
 
@@ -20,7 +20,7 @@ Given /^I am not a registered user$/ do
 end
 
 Given /^I am a logged in user$/ do
-  @user = User.create!(:email => 'user@user.com', :password => 'useruser')
+  @user = User.create!(:first_name => 'user', :last_name => 'user', :email => 'user@user.com', :password => 'useruser')
   login(@user.email, @user.password)
 end
 
