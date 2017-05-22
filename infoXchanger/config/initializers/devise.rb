@@ -14,7 +14,12 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer_sender = 'hello@example.com'
 
-  config.omniauth :facebook, '161904311012029', '7f651693a1d641809c55167199605dd2'
+  config.omniauth :facebook, ENV['FB_APP_ID'], ENV['FB_APP_SECRET'],
+  scope: 'public_profile,email,user_birthday', display: 'popup', image_size: 'large',
+  client_options: {
+    site: 'https://graph.facebook.com/v2.9',
+    authorize_url: "https://www.facebook.com/v2.9/dialog/oauth"
+  }
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 

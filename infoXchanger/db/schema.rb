@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170519134101) do
+ActiveRecord::Schema.define(version: 20170522213340) do
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20170519134101) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "provider"
+    t.string "uid"
     t.string "first_name", default: ""
     t.string "last_name", default: ""
     t.string "address", default: ""
@@ -40,8 +42,7 @@ ActiveRecord::Schema.define(version: 20170519134101) do
     t.float "weight", default: 0.0
     t.float "height", default: 0.0
     t.string "blood_group", default: ""
-    t.string "provider"
-    t.string "uid"
+    t.string "image_url"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

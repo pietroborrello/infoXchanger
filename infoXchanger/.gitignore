@@ -22,4 +22,8 @@
 
 .byebug_history
 .DS_Store
-.tag
+.tags
+.tags1
+
+# Ignore application configuration
+# /config/application.yml

@@ -64,3 +64,8 @@ end
 
 gem 'omniauth-facebook'
 
+gem 'figaro'
+
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
+
