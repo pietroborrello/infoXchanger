@@ -15,6 +15,10 @@ Devise.setup do |config|
   config.mailer_sender = 'hello@example.com'
 
   config.omniauth :facebook, '161904311012029', '7f651693a1d641809c55167199605dd2'
+
+  config.omniauth :google_oauth2, "491807312611-k9eiknbkb8gk6vj4u1cb9k24e6e40186.apps.googleusercontent.com
+", "W6yTddmyT1yRLBVGpzNIKG9W", { }
+
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 
