@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
        users_myprofile_path
        #super
      else
-       request.env['omniauth.origin'] || stored_location_for(resource) || request.referer || root_path
+       users_myprofile_path || request.env['omniauth.origin'] || stored_location_for(resource) || request.referer
      end
    end
 
