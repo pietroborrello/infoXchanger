@@ -66,6 +66,12 @@ gem 'omniauth-facebook'
 
 gem 'figaro'
 
+#bootstrap
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'jquery-rails'
+gem 'sprockets-rails'
+gem 'bootstrap-social-rails'
+gem 'font-awesome-rails'
+
 
