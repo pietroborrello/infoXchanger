@@ -6,4 +6,8 @@ class UsersController < ApplicationController
   def myprofile
     @user = current_user
   end
+
+  def users
+    redirect_to users_myprofile_path
+  end
 end
