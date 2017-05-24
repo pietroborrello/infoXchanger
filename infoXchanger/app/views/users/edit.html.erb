@@ -1,5 +1,5 @@
 <h1>Edit your profile</h1>
-   
+<div class='form col-xs-3'>
 <%= form_for(@user) do |f| %>
 
 	<%= f.label :First_name %>
@@ -48,11 +48,10 @@
 	<%= f.number_field :height, class: 'form-control' %>
 
 	<%= f.label :Blood_group %>
-	<%= f.text_field :blood_group, class: 'form-control' %>   
+	<%= f.text_field :blood_group, class: 'form-control' %>
 
 	<br><br>
 	<%= f.submit "Save changes", class: "btn btn-primary" %> &nbsp;&nbsp;
 	<%= link_to "Back", :back %>
 <% end %>
-
-
+</div>
