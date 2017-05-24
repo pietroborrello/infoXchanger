@@ -14,7 +14,8 @@ class UsersController < ApplicationController
 
   def search
     username = params[:user].permit(:name)
-    @user = User.find_by(email: username[:name])
+    @user = User.where('email LIKE ?', '%' + username[:name] + '%')[0]
+    #render plain: @user.inspect
     render users_show_path
   end
 end
