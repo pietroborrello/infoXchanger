@@ -8,7 +8,7 @@ Scenario: User Successfully register
  And I am on the home page
  And I am not authenticated
  When I register as user@user.com, useruser
- Then I should be on the users_myprofile page
+ Then I should be on the home page
  And I should see "Welcome! You have signed up successfully."
 
  Scenario: User fails to register

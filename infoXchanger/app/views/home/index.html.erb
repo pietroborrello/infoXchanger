@@ -1,4 +1,12 @@
 <h1>Home</h1>
+<br>
+  <%= form_for :user, url: users_search_path, html: {class: "form-inline"}  do |f| %>
+    <div class="field form-group">
+      <%= f.text_field :name, class: "form-control col-xs-2" %>
+      <%= f.submit 'Search', :class => "btn btn-default"%>
+    </div>
+  <% end %>
+<br>
 <% if user_signed_in? %>
   Logged in as <strong><%= current_user.email %></strong>.<br>
   <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
