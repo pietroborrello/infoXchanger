@@ -1,0 +1,58 @@
+<h1>Edit your profile</h1>
+   
+<%= form_for(@user) do |f| %>
+
+	<%= f.label :First_name %>
+	<%= f.text_field :first_name, class: 'form-control' %>
+
+	<%= f.label :Last_name %>
+	<%= f.text_field :last_name, class: 'form-control' %>
+
+	<%= f.label :email %>
+	<%= f.email_field :email, class: 'form-control' %>
+
+	<%= f.label :Address %>
+	<%= f.text_field :address, class: 'form-control' %>
+
+	<%= f.label :Born_on %>
+	<%= f.date_field :born_on, class: 'form-control' %>
+
+	<%= f.label :Born_at %>
+	<%= f.text_field :born_at, class: 'form-control' %>
+
+	<%= f.label :Telephone %>
+	<%= f.telephone_field :telephone, class: 'form-control' %>
+
+	<%= f.label :Website %>
+	<%= f.url_field :website, class: 'form-control' %>
+
+	<%= f.label :Social_number %>
+	<%= f.text_field :social_number, class: 'form-control' %>
+
+	<%= f.label :ID_number %>
+	<%= f.text_field :id_number, class: 'form-control' %>
+
+	<%= f.label :License_number %>
+	<%= f.text_field :license_number, class: 'form-control' %>
+
+	<%= f.label :Insurance_company %>
+	<%= f.text_field :insurance_company, class: 'form-control' %>
+
+	<%= f.label :Car_plate %>
+	<%= f.text_field :car_plate, class: 'form-control' %>
+
+	<%= f.label :Weight %>
+	<%= f.number_field :weight, class: 'form-control' %>
+
+	<%= f.label :Height %>
+	<%= f.number_field :height, class: 'form-control' %>
+
+	<%= f.label :Blood_group %>
+	<%= f.text_field :blood_group, class: 'form-control' %>   
+
+	<br><br>
+	<%= f.submit "Save changes", class: "btn btn-primary" %> &nbsp;&nbsp;
+	<%= link_to "Back", :back %>
+<% end %>
+
+

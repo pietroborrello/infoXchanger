@@ -1,4 +1,4 @@
-<!-- rails generate migration add_info_to_users first_name:string last_name:string address:string born_on:date born_at:string telephone:string website:string social_number:string id_number:string license_number:string car_plate:string weight:float height:float blood_group:string-->
+<!-- rails generate migration add_info_to_users first_name:string last_name:string address:string born_on:date born_at:string telephone:string website:string social_number:string id_number:string license_number:string insurance_company:string car_plate:string weight:float height:float blood_group:string-->
 <% if @user.image_url %>
   <%= image_tag(@user.image_url, :alt => "profile image") %><br>
 <% else %>
@@ -15,10 +15,14 @@
 <strong>Social Number: </strong><%= @user.social_number %><br>
 <strong>ID Number: </strong><%= @user.id_number %><br>
 <strong>License Number: </strong><%= @user.license_number %><br>
+<strong>Insurance Company: </strong><%= @user.insurance_company %><br>
 <strong>Car Plate: </strong><%= @user.car_plate %><br><br>
 <strong>Weight: </strong><%= @user.weight %><br>
 <strong>Height: </strong><%= @user.height %><br>
 <strong>Blood group: </strong><%= @user.blood_group %><br>
 <br>
-<%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+<%= link_to 'Edit LogIn Info', edit_user_registration_path, :class => 'navbar-link' %> |
+<%= link_to 'Edit Profile', edit_user_path(@user), :class => 'navbar-link' %> |
 <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<br><br>
+<%= link_to "Home", root_path, :class => 'navbar-link' %>
