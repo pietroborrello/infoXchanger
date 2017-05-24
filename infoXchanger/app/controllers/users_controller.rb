@@ -20,12 +20,12 @@ class UsersController < ApplicationController
 
   def search
     username = params[:user].permit(:name)
-    @user = User.where('email LIKE ?', '%' + username[:name] + '%')[0]
+    @users = User.where('email LIKE ?', '%' + username[:name] + '%')
     #render plain: @user.inspect
-    if @user == nil
+    if @users == nil
       redirect_to root_path, flash: {:alert => 'No user found'}
     else
-      render users_show_path
+      render users_search_path
     end
   end
 end

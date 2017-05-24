@@ -1,0 +1,6 @@
+<% if @user.image_url %>
+  <%= image_tag(@user.image_url, :alt => "profile image") %><br>
+<% else %>
+  <%= image_tag("/images/blank_profile.png", :alt => "login with Facebook to get an image") %><br>
+<% end %>
+<%= link_to 'Show', show_users_path(@user)%>
