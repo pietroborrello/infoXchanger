@@ -21,11 +21,16 @@ class UsersController < ApplicationController
   def search
     if params[:query] != nil
       query = params[:query][0]
-      @users = User.where('email LIKE ?', '%' + query + '%')
-      if @users != nil && !@users.empty?
-        render users_search_path
+      min_len = 5
+      if query.length < min_len
+        redirect_to root_path, flash: {:alert => "You have to insert at least #{min_len} characters to search for a user"}
       else
-        redirect_to root_path, flash: {:alert => 'No user found'}
+        @users = User.where('email LIKE ?', '%' + query + '%')
+        if @users != nil && !@users.empty?
+          render users_search_path
+        else
+          redirect_to root_path, flash: {:alert => 'No user found'}
+        end
       end
     else
       redirect_to root_path, flash: {:alert => 'No user found'}
