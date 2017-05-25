@@ -7,6 +7,9 @@ I want to have my fb data imported automatically at registration
 Scenario: User Logs in with FB
  Given I am on the home page
  And I am signed in with Facebook provider
+ Then I should be on the home page
+ And I should see "Successfully authenticated from Facebook account."
+ When I follow "my Profile"
  Then I should be on the users_myprofile page
  And I should see "First Name: John"
  And I should see "Last Name: Smith"

@@ -8,5 +8,5 @@ Scenario: User Logs in with FB
  Given I am on the home page
  And I am not authenticated
  When I sign in with Facebook provider
- Then I should be on the users_myprofile page
+ Then I should be on the home page
  And I should see "Successfully authenticated from Facebook account."
