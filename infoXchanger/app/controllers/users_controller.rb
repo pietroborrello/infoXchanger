@@ -19,13 +19,16 @@ class UsersController < ApplicationController
   end
 
   def search
-    username = params[:user].permit(:name)
-    @users = User.where('email LIKE ?', '%' + username[:name] + '%')
-    #render plain: @user.inspect
-    if @users == nil
-      redirect_to root_path, flash: {:alert => 'No user found'}
+    if params[:query] != nil
+      query = params[:query][0]
+      @users = User.where('email LIKE ?', '%' + query + '%')
+      if @users != nil && !@users.empty?
+        render users_search_path
+      else
+        redirect_to root_path, flash: {:alert => 'No user found'}
+      end
     else
-      render users_search_path
+      redirect_to root_path, flash: {:alert => 'No user found'}
     end
   end
 end

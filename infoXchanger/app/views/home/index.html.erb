@@ -1,10 +1,10 @@
 <div class="text-center">
   <h1>Home</h1>
   <br>
-    <%= form_for :user, url: users_search_path, html: {class: "form-inline"}  do |f| %>
+    <%= form_tag({action: 'search', :controller=>"users"}, {method: 'get', class: "form-inline"} ) do |f| %>
       <div class="field form-group">
-        <%= f.text_field :name, class: "form-control col-xs-2" %>
-        <%= f.submit 'Search', :class => "btn btn-default"%>
+        <%= text_field :query, '', class: "form-control col-xs-1" %>
+        <%= submit_tag 'Search', :class => "btn btn-default"%>
       </div>
     <% end %>
   <br>
