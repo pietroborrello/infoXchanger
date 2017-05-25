@@ -16,10 +16,10 @@ class ApplicationController < ActionController::Base
      sign_in_url = new_user_session_url
      sign_up_url = new_user_registration_url
      if request.referer == sign_in_url || request.referer == sign_up_url
-       users_myprofile_path
+       root_path
        #super
      else
-       users_myprofile_path || request.env['omniauth.origin'] || stored_location_for(resource) || request.referer
+       root_path || request.env['omniauth.origin'] || stored_location_for(resource) || request.referer
      end
    end
 

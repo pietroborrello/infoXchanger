@@ -1,0 +1,5 @@
+<% @users.each do |user| %>
+  <%= render partial: 'preview', locals: {user: user} %>
+  <br>
+<% end %>
+<%= link_to 'Back', root_path %>
