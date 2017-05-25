@@ -36,12 +36,17 @@ class UsersController < ApplicationController
   def search
     if params[:query] != nil
       query = params[:query][0]
-      min_len = 5
+      min_len = 3
       if query.length < min_len
         redirect_to root_path, flash: {:alert => "You have to insert at least #{min_len} characters to search for a user"}
       else
-        @users = User.where('email LIKE ?', '%' + query + '%')
-        if @users != nil && !@users.empty?
+        query = query.split(' ')
+        @users = User.where('first_name IN (?) OR last_name IN (?) OR email IN (?)', query, query, query)
+        query.each do |query|
+          res = User.where('first_name LIKE ? OR last_name LIKE ? OR email LIKE ?', '%' + query + '%', '%' + query + '%', '%' + query + '%')
+          @users = @users.or(res)
+        end
+        if !@users.empty?
           render users_search_path
         else
           redirect_to root_path, flash: {:alert => 'No user found'}
