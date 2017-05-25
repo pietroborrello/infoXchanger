@@ -50,10 +50,10 @@ class UsersController < ApplicationController
     else
       redirect_to root_path, flash: {:alert => 'No user found'}
     end
-    
+  end
+
 private
-def user_params
+  def user_params
     params.require(:user).permit(:first_name,:last_name,:email,:address,:born_on,:born_at,:telephone,:website,:social_number,:id_number,:license_number,:insurance_company,:car_plate,:weight,:height,:blood_group,:image_url)
-    
   end
 end
