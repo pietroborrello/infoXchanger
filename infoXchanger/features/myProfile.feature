@@ -6,6 +6,6 @@ I want to go to my profile
 Scenario: User go to his profile
  Given I am a logged in user
  And I am on the home page
- When I follow "my Profile"
+ When I follow "My Profile"
  Then I should be on the users_myprofile page
  And I should see "First Name" 
