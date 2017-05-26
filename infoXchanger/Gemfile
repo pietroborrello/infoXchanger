@@ -74,4 +74,5 @@ gem 'sprockets-rails'
 gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
 
+gem 'rqrcode'
 
