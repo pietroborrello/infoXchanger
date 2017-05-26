@@ -97,6 +97,7 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
+    digest (0.0.1)
     erubi (1.6.0)
     execjs (2.7.0)
     faraday (0.11.0)
@@ -258,6 +259,7 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   devise
+  digest
   figaro
   font-awesome-rails
   jbuilder (~> 2.5)

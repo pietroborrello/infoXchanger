@@ -5,6 +5,7 @@ table {
   border-style: none;
   border-color: #0000ff;
   border-collapse: collapse;
+  margin: auto;
 }
 
 td {
@@ -20,8 +21,9 @@ td.white { border-color: #fff; }
 
 </style>
 <br><br>
-<div class="container col-lg-2 col-lg-offset-5 text-center">
+<br><br>
 <%= raw @qr.as_html %>
-<br>
-<strong><%= @qrlink %></strong>
+<br><br>
+<div class="col-lg-10 col-lg-offset-1 text-center">
+  <strong><%= link_to @qrlink, @qrlink %></strong>
 </div>

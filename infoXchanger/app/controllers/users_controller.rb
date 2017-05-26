@@ -1,18 +1,32 @@
 class UsersController < ApplicationController
 
   def show
-    @user = User.find(params[:id])
-    if @user == nil
+    begin
+      @token = Token.find_by(token_hash: params[:t])
+      if !@token
+        raise ActiveRecord::RecordNotFound
+      end
+      @user = User.find(@token.user_id)
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to root_path, flash: {:alert => 'No user found'}
+    end
+
+  end
+
+  def edit
+    begin
+      @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'No user found'}
     end
   end
 
-  def edit
-  	@user = User.find(params[:id])
-  end
-
   def update
-  	@user = User.find(params[:id])
+    begin
+      @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to root_path, flash: {:alert => 'No user found'}
+    end
   	if @user.update_attributes(user_params)
   		flash[:success] = "Profile updated"
   		redirect_to users_myprofile_path
