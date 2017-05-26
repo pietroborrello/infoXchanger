@@ -2,11 +2,16 @@ class UsersController < ApplicationController
 
   def show
     begin
-      @token = Token.find_by(token_hash: params[:t])
-      if !@token
-        raise ActiveRecord::RecordNotFound
+      if !params[:t]
+        @user = User.find(params[:id])
+        @token = nil
+      else
+        @token = Token.find_by(token_hash: params[:t])
+        if !@token
+          raise ActiveRecord::RecordNotFound
+        end
+        @user = User.find(@token.user_id)
       end
-      @user = User.find(@token.user_id)
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'No user found'}
     end
