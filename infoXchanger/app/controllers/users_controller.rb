@@ -10,7 +10,6 @@ class UsersController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'No user found'}
     end
-
   end
 
   def edit
