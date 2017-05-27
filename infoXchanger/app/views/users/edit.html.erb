@@ -14,7 +14,7 @@
 	<%= f.label :Address %>
 	<%= f.text_field :address, class: 'form-control' %>
 
-	<%= f.label :Born_on %>
+	<%= f.label :Born_on %> (year should be 4 digits)
 	<%= f.date_field :born_on, class: 'form-control' %>
 
 	<%= f.label :Born_at %>
@@ -50,8 +50,9 @@
 	<%= f.label :Blood_group %>
 	<%= f.text_field :blood_group, class: 'form-control' %>
 
-	<br><br>
+	<br>
 	<%= f.submit "Save changes", class: "btn btn-primary" %> &nbsp;&nbsp;
 	<%= link_to "Back", :back %>
+	<br><br>
 <% end %>
 </div>

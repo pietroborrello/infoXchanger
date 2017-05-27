@@ -33,6 +33,9 @@ module NavigationHelpers
 
     when /^the users_edit page$/
       edit_user_path(@user)
+      
+    when /^the users_select page$/
+	  users_select_path(@user)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
