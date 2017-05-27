@@ -1,24 +1,7 @@
 class TokensController < ApplicationController
-  @info =
-  [:email,
-  :first_name,
-  :last_name,
-  :address,
-  :born_on,
-  :born_at,
-  :telephone,
-  :website,
-  :social_number,
-  :id_number,
-  :license_number,
-  :car_plate,
-  :weight,
-  :height,
-  :blood_group,
-  :image_url]
 
   def create
-    info_str = "0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15"
+    info_str = "0 1 2 3 4 5 6 7 8 9 10 11 12"
     @user = current_user
     password = ''
     token_hash = SecureRandom.urlsafe_base64(18)

@@ -1,5 +1,20 @@
 class UsersController < ApplicationController
 
+  @@info =
+  [:address,
+  :born_on,
+  :born_at,
+  :telephone,
+  :website,
+  :social_number,
+  :id_number,
+  :license_number,
+  :car_plate,
+  :insurance_company,
+  :weight,
+  :height,
+  :blood_group]
+
   def show
     begin
       if !params[:t]
@@ -11,6 +26,7 @@ class UsersController < ApplicationController
           raise ActiveRecord::RecordNotFound
         end
         @user = User.find(@token.user_id)
+        @info = @@info
       end
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'No user found'}
