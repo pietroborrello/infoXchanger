@@ -20,6 +20,8 @@ Devise.setup do |config|
     site: 'https://graph.facebook.com/v2.9',
     authorize_url: "https://www.facebook.com/v2.9/dialog/oauth"
   }
+
+  config.omniauth :google_oauth2, '491807312611-5qh7i1gt1lv2j4mhrpd4lk9sqbljee16.apps.googleusercontent.com', 'mky4vGajUWN1vpsdHffSclgh', {}
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
 

@@ -63,6 +63,7 @@ group :test do
 end
 
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 gem 'figaro'
 
@@ -73,5 +74,3 @@ gem 'jquery-rails'
 gem 'sprockets-rails'
 gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
-
-
