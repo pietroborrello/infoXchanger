@@ -2,7 +2,7 @@
 
 <%= javascript_include_tag('select_all.js') %>
 
-<%= form_for :current_user, url: root_path, method: :get do |f| %>
+<%= form_tag(user_tokens_path(current_user), {method: 'post', class: "form-inline"} ) do |f| %>
 
 	<label class="li" ><%= check_box_tag :select_all %> &nbsp; <font color='red' ><i><%= "SELECT ALL" %></i></font></label><br/>
 
@@ -35,10 +35,10 @@
 	<label class="li"><%= check_box_tag :weight %> &nbsp;<%= "Weight" %></label><br/>
 
 	<label class="li"><%= check_box_tag :height %>&nbsp; <%= "Height" %></label><br/>
-	
+
 	<label class="li"><%= check_box_tag :blood_group %>&nbsp; <%= "Blood group" %></label><br/>
-	
+
 	<br>
-	<%= f.submit "Generate Token", class: "btn btn-primary" %> &nbsp;&nbsp;
+	<%= submit_tag "Generate Token", class: "btn btn-primary" %> &nbsp;&nbsp;
 	<%= link_to "Back", :back %>
 <% end %>
