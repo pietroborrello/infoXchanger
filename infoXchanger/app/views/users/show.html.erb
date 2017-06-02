@@ -9,7 +9,7 @@
 <strong>Email: </strong><%= @user.email %><br><br>
 <% if @token %>
   <% @token.info.split(' ').each do |field| %>
-    <strong><%=@info[field.to_i].to_s.humanize%></strong>:<%= @user.send(@info[field.to_i]) %><br>
+    <strong><%=@info[field.to_i].to_s.humanize%></strong>: <%= @user.send(@info[field.to_i]) %><br>
   <% end %>
 <% end %>
 <br>
