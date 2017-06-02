@@ -29,13 +29,17 @@ module NavigationHelpers
       '/users/myprofile'
 
     when /^the user (.*) profile page$/
+      byebug
       '/users/'+User.find_by(:email => $1).id.to_s
 
     when /^the users_edit page$/
       edit_user_path(@user)
 
     when /^the users_select page$/
-	  users_select_path
+	     users_select_path
+
+    when /^the user_token page$/
+      user_token_path(@user, 1)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

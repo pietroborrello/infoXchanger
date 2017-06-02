@@ -8,4 +8,4 @@ Scenario: Select a subset
  And I am on the home page
  When I press "Xchange!"
  Then I should be on the users_select page
- And I should check the "first_name" checkbox
+ And I should see "Select info to share"
