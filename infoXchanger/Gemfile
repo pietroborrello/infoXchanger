@@ -40,6 +40,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'selenium-webdriver'
+  gem 'rspec-rails'
+  gem 'rspec'
+  gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -57,9 +61,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 group :test do
   gem 'cucumber-rails', :require => false
   gem 'cucumber-rails-training-wheels'
-  gem 'database_cleaner'
+  gem 'faker'
   gem 'capybara'
+  gem 'guard-rspec'
   gem 'launchy'
+  gem 'database_cleaner'
 end
 
 gem 'omniauth-facebook'

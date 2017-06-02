@@ -7,7 +7,6 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-
   has_many :tokens
 
    def self.from_omniauth(auth)
@@ -18,7 +17,8 @@ class User < ApplicationRecord
       user.first_name, user.last_name = name.split(' ', 2)
       user.image_url = auth.info.image
     end
-	end
+  end
+  
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
