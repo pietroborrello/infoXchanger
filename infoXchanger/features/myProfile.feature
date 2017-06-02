@@ -8,4 +8,4 @@ Scenario: User go to his profile
  And I am on the home page
  When I follow "my Profile"
  Then I should be on the users_myprofile page
- And I should see "First Name" 
+ And I should see "First Name"

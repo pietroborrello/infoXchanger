@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!
+  before_action :authenticate_user! unless Rails.env.test?
 
 
 
@@ -13,14 +13,7 @@ class ApplicationController < ActionController::Base
    end
 
    def after_sign_in_path_for(resource)
-     sign_in_url = new_user_session_url
-     sign_up_url = new_user_registration_url
-     if request.referer == sign_in_url || request.referer == sign_up_url
-       root_path
-       #super
-     else
-       root_path || request.env['omniauth.origin'] || stored_location_for(resource) || request.referer
-     end
+       stored_location_for(resource) || root_path
    end
 
 end

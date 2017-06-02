@@ -205,6 +205,10 @@ Then /^the "([^"]*)" field should have no error$/ do |field|
   end
 end
 
+Then(/^I should check the "([^"]*)" checkbox$/) do |label|
+	find_field(label).set(true)
+end
+
 Then /^the "([^"]*)" checkbox(?: within (.*))? should be checked$/ do |label, parent|
   with_scope(parent) do
     field_checked = find_field(label)['checked']
