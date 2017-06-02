@@ -62,7 +62,6 @@ GEM
     childprocess (0.7.0)
       ffi (~> 1.0, >= 1.0.11)
     chunky_png (1.3.8)
-    coffee-rails (4.2.1)
     coderay (1.1.1)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
@@ -99,7 +98,6 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.3)
-    digest (0.0.1)
     erubi (1.6.0)
     execjs (2.7.0)
     factory_girl (4.8.0)
@@ -135,7 +133,7 @@ GEM
       guard-compat (~> 1.1)
       rspec (>= 2.99.0, < 4.0)
     hashie (3.5.5)
-    i18n (0.8.1)
+    i18n (0.8.4)
     jbuilder (2.6.4)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2)
@@ -166,7 +164,7 @@ GEM
     multi_xml (0.6.0)
     multipart-post (2.0.0)
     nenv (0.3.0)
-    nio4r (2.0.0)
+    nio4r (2.1.0)
     nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     notiffany (0.1.1)
@@ -192,7 +190,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     public_suffix (2.0.5)
-    puma (3.8.2)
+    puma (3.9.0)
     rack (2.0.3)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -208,9 +206,9 @@ GEM
       bundler (>= 1.3.0, < 2.0)
       railties (= 5.1.1)
       sprockets-rails (>= 2.0.0)
-    rails-controller-testing (1.0.1)
-      actionpack (~> 5.x)
-      actionview (~> 5.x)
+    rails-controller-testing (1.0.2)
+      actionpack (~> 5.x, >= 5.0.1)
+      actionview (~> 5.x, >= 5.0.1)
       activesupport (~> 5.x)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
@@ -319,7 +317,6 @@ DEPENDENCIES
   cucumber-rails-training-wheels
   database_cleaner
   devise
-  digest
   factory_girl_rails
   faker
   figaro
@@ -332,8 +329,8 @@ DEPENDENCIES
   omniauth-facebook
   puma (~> 3.7)
   rails (~> 5.1.0)
-  rqrcode
   rails-controller-testing
+  rqrcode
   rspec
   rspec-rails
   sass-rails (~> 5.0)
