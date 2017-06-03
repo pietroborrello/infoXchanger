@@ -69,7 +69,16 @@ Before('@omniauth_test') do
       :email => 'john@smith.com',
     }
   })
+  OmniAuth.config.add_mock(:google_oauth2, {
+      :uid => '12345',
+      :info => {
+        :name => 'John Smith',
+        :email => 'john@smith.com',
+      }
+    })
+
 end
+
 
 After('@omniauth_test') do
   OmniAuth.config.test_mode = false
