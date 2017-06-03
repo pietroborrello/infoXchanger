@@ -8,7 +8,8 @@
       </div>
     <% end %>
   <br>
-  <%= button_to "Xchange!", users_select_path, method: :get , :class => 'btn btn-info'%>
+  <%= button_to "Xchange!", users_select_path, method: :get , :class => 'btn btn-success'%>
+  <%= button_to "Scan!", scan_path, method: :get , :class => 'btn btn-warning'%>
   <br>
   <% if user_signed_in? %>
     Logged in as <strong><%= current_user.email %></strong>.<br>

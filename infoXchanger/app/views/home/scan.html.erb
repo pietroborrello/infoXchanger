@@ -1,0 +1,16 @@
+<%=  stylesheet_link_tag "qr-web-scanner" %>
+<div class="text-center">
+  <h1>Scanner</h1>
+  <br>
+  <div id="qr-web-scan"></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        QRWebScanner.init({
+            container: '#qr-web-scan'
+
+        }, function(data){
+            console.log('aaaa' + data);
+        });
+    });
+  </script>
+</div>
