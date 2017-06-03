@@ -28,4 +28,9 @@
         <span class="fa fa-facebook"></span> Sign in with Facebook
     </div>
   <% end %>
+  <br>
+  <br>
+  <%= link_to user_google_oauth2_omniauth_authorize_path, class: "btn btn-social btn-google" do %>
+    <span class="fa fa-google"></span> Sign in with Google
+  <% end %>
 </div>

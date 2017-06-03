@@ -6,7 +6,7 @@ I want to generate a Token
 Scenario: GenerateToken
  Given I am a logged in user
  And I am on the home page
- When I press "Xchange!"
+ When I press "Create Token"
  Then I should be on the users_select page
  When I check "select_all"
  And I press "Generate Token"

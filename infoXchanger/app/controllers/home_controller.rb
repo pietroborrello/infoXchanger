@@ -4,4 +4,7 @@ class HomeController < ApplicationController
       redirect_to users_show_path t: params[:t]
     end
   end
+
+  def scan
+  end
 end

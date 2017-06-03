@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  get 'scan', to: 'home#scan'
   get 'users/myprofile'
   get 'users/show'
   get 'users' => 'users#users'
