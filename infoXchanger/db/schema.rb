@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526145410) do
+ActiveRecord::Schema.define(version: 20170603152927) do
+
+  create_table "scanned_tokens", force: :cascade do |t|
+    t.integer "scanner_id"
+    t.integer "scanned_id"
+    t.integer "token_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scanned_id"], name: "index_scanned_tokens_on_scanned_id"
+    t.index ["scanner_id"], name: "index_scanned_tokens_on_scanner_id"
+    t.index ["token_id"], name: "index_scanned_tokens_on_token_id"
+  end
 
   create_table "tokens", force: :cascade do |t|
     t.integer "user_id"
