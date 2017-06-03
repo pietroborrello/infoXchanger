@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'scan', to: 'home#scan'
+  post 'download', to:'home#download'
   get 'users/myprofile'
   get 'users/show'
   get 'users' => 'users#users'
