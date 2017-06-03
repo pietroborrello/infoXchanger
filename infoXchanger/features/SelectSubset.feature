@@ -6,6 +6,6 @@ I want to select a subset of my information
 Scenario: Select a subset
  Given I am a logged in user
  And I am on the home page
- When I press "Xchange!"
+ When I press "Create Token"
  Then I should be on the users_select page
  And I should see "Select info to share"

@@ -8,8 +8,14 @@
       </div>
     <% end %>
   <br>
-  <%= button_to "Xchange!", users_select_path, method: :get , :class => 'btn btn-success'%>
-  <%= button_to "Scan!", scan_path, method: :get , :class => 'btn btn-warning'%>
+  <div class="row">
+    <div class="col-xs-6 text-right">
+      <%= button_to "Create Token", users_select_path, method: :get , :class => 'btn btn-lg btn-success'%>
+    </div>
+    <div class="col-xs-6 text-left">
+      <%= button_to "Scan Token", scan_path, method: :get , :class => 'btn btn-lg btn-warning'%>
+    </div>
+  </div>
   <br>
   <% if user_signed_in? %>
     Logged in as <strong><%= current_user.email %></strong>.<br>

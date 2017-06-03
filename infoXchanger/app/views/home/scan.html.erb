@@ -7,9 +7,8 @@
     document.addEventListener('DOMContentLoaded', function() {
         QRWebScanner.init({
             container: '#qr-web-scan'
-
         }, function(data){
-            console.log('aaaa' + data);
+            window.location.replace(data);
         });
     });
   </script>

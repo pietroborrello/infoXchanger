@@ -293,6 +293,7 @@ var QRWebScanner = (function () {
                 Set.labelFile(labelF);
                 Get.labelFile().htmlFor = Get.inputFile().id;
                 Get.labelFile().innerHTML = 'Upload';
+                Get.labelFile().className = 'btn btn-info'
 
                 btnsBox.appendChild(labelF);
             });
@@ -457,7 +458,7 @@ var QRWebScanner = (function () {
 
         checkForLink: function (data) {
             if (data.indexOf("http://") === 0 || data.indexOf("https://") === 0) {
-                return '<a target="_blank" href="' + data + '">' + data + '</a>';
+                return '<strong><a target="_blank" href="' + data + '">' + data + '</a></strong>';
             }
 
             return data;
