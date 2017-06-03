@@ -18,7 +18,6 @@ td {
 
 td.black { border-color: #000; }
 td.white { border-color: #fff; }
-
 </style>
 <br><br>
 <br><br>
@@ -28,5 +27,6 @@ td.white { border-color: #fff; }
   <strong><%= link_to @qrlink, @qrlink %></strong>
 <br><br>
 <br><br>
-<%= link_to 'Home', root_path%>
+<%= link_to 'Home', root_path%> |
+<%= link_to 'Download as PNG', download_path(data: @qrlink), method: :post%>
 </div>
