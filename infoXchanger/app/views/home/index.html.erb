@@ -10,14 +10,18 @@
   <br>
   <div class="row">
     <div class="col-xs-6 text-right">
-      <%= button_to "Create Token", users_select_path, method: :get , :class => 'btn btn-lg btn-success'%>
+      <%= button_to users_select_path, method: :get , :class => 'btn btn-lg btn-success' do %>
+      <span class="fa fa-plus"></span> Create Token
+    <% end %>
     </div>
     <div class="col-xs-6 text-left">
-      <%= button_to "Scan Token", scan_path, method: :get , :class => 'btn btn-lg btn-primary'%>
+      <%= button_to scan_path, method: :get , :class => 'btn btn-lg btn-primary' do%>
+        <span class="fa fa-camera-retro"></span> Scan Token
+      <% end %>
     </div>
   </div>
   <br>
-  <%= button_to "Scanned Tokens", scannedtokens_scanned_path, method: :get , :class => 'btn btn-info'%>
+  <%= button_to "Scanned Tokens", scannedtokens_scanned_path, method: :get , :class => 'btn btn-primary'%>
   <br>
   <% if user_signed_in? %>
     Logged in as <strong><%= current_user.email %></strong>.<br>
