@@ -42,7 +42,7 @@ class TokensController < ApplicationController
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'Token not valid'}
     rescue RQRCode::QRCodeRunTimeError => e
-      redirect_to root_path, flash: {:alert => 'Token lenght not valid please contact the administrator'}
+      redirect_to root_path, flash: {:alert => 'Token lenght not valid, please contact the administrator'}
     end
   end
 end
