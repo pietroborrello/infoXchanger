@@ -1,9 +1,9 @@
-Feature: My QRToken List
+Feature: Dismiss QRToken
 As a Logged user
-So that I can track the QRToken and links I generate
-I want to see a list of the QRtokens and links I have ever generated
+So that no one with that token can scan it anymore
+I want to delete a QRToken from the server
 
-Scenario: My QRToken List
+Scenario: Dismiss QRToken
  Given I am a logged in user
  And I am on the home page
  When I press "Create Token"
@@ -12,5 +12,6 @@ Scenario: My QRToken List
  And I follow "Home"
  And I press "My Tokens"
  Then I should be on the tokens_mytokens page
- And I should see "Here all the tokens you have generated:"
  And I should see "user"
+ When I press "Dismiss this token"
+ Then I should not see "user"

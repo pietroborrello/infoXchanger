@@ -1,16 +1,13 @@
 <h1>Select info to share</h1>
 
+<span>(First_name, Last_name and email will be always included)</span>
+<br><br>
+
 <%= javascript_include_tag('select_all.js') %>
 
 <%= form_tag(user_tokens_path(current_user), {method: 'post', class: "form-inline"} ) do |f| %>
 
 	<label class="li" ><%= check_box_tag :select_all %> &nbsp; <font color='red' ><i><%= "SELECT ALL" %></i></font></label><br/>
-
-	<label class="li"><%= check_box_tag :first_name %> &nbsp; <%= "First Name" %></label><br/>
-
-	<label class="li"><%= check_box_tag :last_name %>&nbsp; <%= "Last name" %></label><br/>
-
-	<label class="li"><%= check_box_tag :email %> &nbsp;<%= "Email" %></label><br/>
 
 	<label class="li"><%= check_box_tag :address %>&nbsp; <%= "Address" %></label><br/>
 

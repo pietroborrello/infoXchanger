@@ -45,4 +45,18 @@ class TokensController < ApplicationController
       redirect_to root_path, flash: {:alert => 'Token lenght not valid, please contact the administrator'}
     end
   end
+  
+  def mytokens
+	@tokens = Token.where(user: current_user)
+	@info = @@info
+  end
+  
+  def destroy
+	@scan_token = ScannedToken.find_by(token_id: params[:id])
+	if @scan_token
+		@scan_token.destroy
+	end
+	Token.find(params[:id]).destroy
+	redirect_to :tokens_mytokens
+  end
 end
