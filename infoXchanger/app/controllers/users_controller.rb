@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+authorize_resource
   @@info =
   [:address,
   :born_on,

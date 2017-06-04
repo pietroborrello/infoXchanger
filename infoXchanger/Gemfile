@@ -92,3 +92,4 @@ gem 'wkhtmltopdf-binary'
 
 gem 'remotipart', github: 'mshibuya/remotipart'
 gem 'rails_admin'
+gem 'cancancan'
