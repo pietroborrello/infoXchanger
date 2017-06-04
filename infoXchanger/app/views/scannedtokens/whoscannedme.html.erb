@@ -1,0 +1,8 @@
+<h1>Who Scanned Me?</h1>
+<br>
+<% @tokens.each do |token| %>
+  <%= link_to 'Show Scanned Info', users_show_path(:t => token.token.token_hash), class: 'col-xs-offset-2 text-right' %>
+  <%= render partial: '/users/preview', locals: {user: token.scanner} %>
+  <br>
+<% end %>
+<%= link_to 'Back', root_path %>
