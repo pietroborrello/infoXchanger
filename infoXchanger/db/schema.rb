@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526145410) do
+ActiveRecord::Schema.define(version: 20170603152927) do
+
+  create_table "scanned_tokens", force: :cascade do |t|
+    t.integer "scanner_id"
+    t.integer "scanned_id"
+    t.integer "token_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scanned_id"], name: "index_scanned_tokens_on_scanned_id"
+    t.index ["scanner_id"], name: "index_scanned_tokens_on_scanner_id"
+    t.index ["token_id"], name: "index_scanned_tokens_on_token_id"
+  end
 
   create_table "tokens", force: :cascade do |t|
     t.integer "user_id"
@@ -36,12 +47,10 @@ ActiveRecord::Schema.define(version: 20170526145410) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
     t.string "first_name", default: ""
     t.string "last_name", default: ""
     t.string "address", default: ""
-    t.date "born_on", default: "2000-01-01"
+    t.date "born_on"
     t.string "born_at", default: ""
     t.string "telephone", default: ""
     t.string "website", default: ""
@@ -53,6 +62,8 @@ ActiveRecord::Schema.define(version: 20170526145410) do
     t.float "weight", default: 0.0
     t.float "height", default: 0.0
     t.string "blood_group", default: ""
+    t.string "provider"
+    t.string "uid"
     t.string "image_url"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

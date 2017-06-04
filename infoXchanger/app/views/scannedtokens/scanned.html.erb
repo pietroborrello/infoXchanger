@@ -1,0 +1,7 @@
+<h1>Scanned:</h1>
+<br>
+<% @tokens.each do |token| %>
+  <%= render partial: 'preview', locals: {token: token.token} %>
+  <br>
+<% end %>
+<%= link_to 'Back', root_path %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'scannedtokens/scanned'
+  get 'scannedtokens/whoscannedme'
   root 'home#index'
 
   get 'scan', to: 'home#scan'

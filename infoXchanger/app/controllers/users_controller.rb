@@ -27,6 +27,9 @@ class UsersController < ApplicationController
         end
         @user = User.find(@token.user_id)
         @info = @@info
+        if @user != current_user
+          ScannedToken.create(scanner: current_user, scanned: @user, token: @token)
+        end
       end
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'No user found'}
