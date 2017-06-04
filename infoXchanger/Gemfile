@@ -86,3 +86,9 @@ gem 'rqrcode'
 #PDF
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
+
+
+#authorization
+
+gem 'remotipart', github: 'mshibuya/remotipart'
+gem 'rails_admin'
