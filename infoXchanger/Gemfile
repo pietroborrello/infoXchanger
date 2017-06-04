@@ -82,3 +82,7 @@ gem 'bootstrap-social-rails'
 gem 'font-awesome-rails'
 
 gem 'rqrcode'
+
+#PDF
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'

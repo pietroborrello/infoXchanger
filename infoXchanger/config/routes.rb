@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  get 'scannedtokens/scanned'
-  get 'scannedtokens/whoscannedme'
   root 'home#index'
 
+  get 'scannedtokens/scanned'
+  get 'scannedtokens/whoscannedme'
   get 'scan', to: 'home#scan'
   post 'download', to:'home#download'
   get 'users/myprofile'
