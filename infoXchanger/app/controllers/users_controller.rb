@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-authorize_resource
   @@info =
   [:address,
   :born_on,
@@ -46,6 +45,7 @@ authorize_resource
   def edit
     begin
       @user = User.find(params[:id])
+      authorize! :edit, @user
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'No user found'}
     end
@@ -54,6 +54,7 @@ authorize_resource
   def update
     begin
       @user = User.find(params[:id])
+      authorize! :update, @user
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'No user found'} and return
     end

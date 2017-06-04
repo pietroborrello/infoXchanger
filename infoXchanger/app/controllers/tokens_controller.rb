@@ -37,6 +37,7 @@ class TokensController < ApplicationController
   def show
     begin
       @token = Token.find(params[:id])
+      authorize! :show, @token
       @qrlink = root_url + '?t=' + @token.token_hash
       @qr = RQRCode::QRCode.new( @qrlink, :size => 6, :level => :h )
     rescue ActiveRecord::RecordNotFound => e
