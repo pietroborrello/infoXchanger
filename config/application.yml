@@ -15,3 +15,7 @@ FB_APP_SECRET: '7f651693a1d641809c55167199605dd2'
 
 GOOGLE_ID: '491807312611-5qh7i1gt1lv2j4mhrpd4lk9sqbljee16.apps.googleusercontent.com'
 GOOGLE_SECRET: 'mky4vGajUWN1vpsdHffSclgh'
+
+DATABASE_PASSWORD: 'passwordmoltosicuraPG!'
+
+QR_SIZE: '7'

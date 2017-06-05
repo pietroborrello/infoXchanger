@@ -39,7 +39,7 @@ class TokensController < ApplicationController
       @token = Token.find(params[:id])
       authorize! :show, @token
       @qrlink = root_url + '?t=' + @token.token_hash
-      @qr = RQRCode::QRCode.new( @qrlink, :size => 6, :level => :h )
+      @qr = RQRCode::QRCode.new( @qrlink, :size => ENV['QR_SIZE'].to_i, :level => :h )
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'Token not valid'}
     rescue RQRCode::QRCodeRunTimeError => e
