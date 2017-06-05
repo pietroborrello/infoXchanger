@@ -38,9 +38,9 @@
           </ul>
         <% else %>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to new_session_path(resource_name) do %>
+          <li><%= link_to new_session_path(:user) do %>
               <span class="fa fa-sign-in"></span> Sign In <%end%></li>
-          <li><%= link_to new_registration_path(resource_name) do %>
+          <li><%= link_to new_registration_path(:user) do %>
               <span class="fa fa-user-plus"></span> Register <%end%></li>
         </ul>
         <% end %>

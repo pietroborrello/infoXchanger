@@ -12,5 +12,5 @@ Scenario: My QRToken List
  And I follow "Home"
  And I follow "My Tokens"
  Then I should be on the tokens_mytokens page
- And I should see "Here all the tokens you have generated:"
+ And I should see "Here all the tokens you have generated"
  And I should see "user"
