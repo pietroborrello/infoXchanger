@@ -34,6 +34,9 @@
 	<div class="col-xs-6 text-right">
       <%= button_to "My Tokens", tokens_mytokens_path, method: :get , :class => 'btn btn-primary'%>
     </div>
+    <div class="col-xs-6 text-left">
+      <%= button_to "Blocked Users", blockedusers_show_path, method: :get , :class => 'btn btn-primary'%>
+    </div>
   </div>
   <br><br>
   <% if user_signed_in? %>

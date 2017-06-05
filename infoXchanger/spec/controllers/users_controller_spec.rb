@@ -24,7 +24,6 @@ RSpec.describe UsersController, type: :controller do
 		context "valid attributes" do
 			it "changes @user's attributes" do
 				put :update, params: { id: @user.id, user: {first_name: "Larry", last_name: "Smith", email: "larry.smith@fake.com"} }
-				#user: FactoryGirl.attributes_for(:user, first_name: "Larry", last_name: "Smith", email: "larry.smith@fake.com")}
 				@user.reload
 				expect(@user.first_name).to eq("Larry")
 				expect(@user.last_name).to eq("Smith")

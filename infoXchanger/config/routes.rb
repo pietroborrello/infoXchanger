@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'scannedtokens/scanned'
   get 'scannedtokens/whoscannedme'
   get 'tokens/mytokens'
+  get 'blockedusers/show'
+  get 'blockedusers/block'
   get 'scan', to: 'home#scan'
   post 'download', to:'home#download'
   get 'users/myprofile'

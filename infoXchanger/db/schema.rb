@@ -47,12 +47,10 @@ ActiveRecord::Schema.define(version: 20170604155317) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "provider"
-    t.string "uid"
     t.string "first_name", default: ""
     t.string "last_name", default: ""
     t.string "address", default: ""
-    t.date "born_on", default: "2000-01-01"
+    t.date "born_on"
     t.string "born_at", default: ""
     t.string "telephone", default: ""
     t.string "website", default: ""
@@ -64,6 +62,8 @@ ActiveRecord::Schema.define(version: 20170604155317) do
     t.float "weight", default: 0.0
     t.float "height", default: 0.0
     t.string "blood_group", default: ""
+    t.string "provider"
+    t.string "uid"
     t.string "image_url"
     t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true

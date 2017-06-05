@@ -1,3 +1,4 @@
+<br><br>
 <% if @user.image_url %>
   <%= image_tag(@user.image_url, :alt => "profile image") %><br>
 <% else %>
@@ -15,8 +16,11 @@
   <%= link_to users_show_path t: @token.token_hash, format: :pdf do %>
     Save as PDF <span class="fa fa-file-pdf-o"></span>
   <% end %>
-  &ensp;|&ensp;
+  &ensp; <br><br>
 <% else %>
-  <br><br>
 <% end %>
+<% if @user.id != current_user.id %>
+	<%= button_to "Block this user", blockedusers_block_path, method: :get , :class => 'btn btn-primary'%>
+	<br>
+<%end%>
 <%= link_to 'Home', root_path%>
