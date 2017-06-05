@@ -10,7 +10,7 @@ class HomeController < ApplicationController
 
   def download
     if params[:data]
-      @qr = RQRCode::QRCode.new(params[:data], :size => 6, :level => :h )
+      @qr = RQRCode::QRCode.new(params[:data], :size => ENV['QR_SIZE'].to_i, :level => :h )
       send_data @qr.as_png(
           resize_gte_to: false,
           resize_exactly_to: false,
