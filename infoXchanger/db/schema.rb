@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170604155317) do
+ActiveRecord::Schema.define(version: 20170605132818) do
+
+  create_table "blocked_users", force: :cascade do |t|
+    t.integer "blocker_id"
+    t.integer "blocked_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["blocked_id"], name: "index_blocked_users_on_blocked_id"
+    t.index ["blocker_id"], name: "index_blocked_users_on_blocker_id"
+  end
 
   create_table "scanned_tokens", force: :cascade do |t|
     t.integer "scanner_id"

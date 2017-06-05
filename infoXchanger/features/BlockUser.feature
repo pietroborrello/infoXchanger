@@ -11,6 +11,7 @@ Scenario: Block User
  Then I should be on the users_search page
  And I should see "user@user.com"
  When I follow "Show"
+ And show me the page
  And I press "Block this user"
  Then I should be on the blockedusers_list page
  And I should see "user@user.com"

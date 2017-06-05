@@ -20,7 +20,7 @@
 <% else %>
 <% end %>
 <% if @user.id != current_user.id %>
-	<%= button_to "Block this user", blockedusers_block_path, method: :get , :class => 'btn btn-primary'%>
+	<%= button_to "Block this user", user_blockeduser_path(@user.id,@user.id), method: :put , :class => 'btn btn-danger'%>
 	<br>
 <%end%>
 <%= link_to 'Home', root_path%>
