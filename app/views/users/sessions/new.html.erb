@@ -26,10 +26,8 @@
 			<br><br>
 			<%= render "users/shared/links" %>
 			<br>
-			<%= link_to user_facebook_omniauth_authorize_path do%>
-			<div class="btn btn-social btn-facebook">
-				<span class="fa fa-facebook"></span> Sign in with Facebook
-			</div>
+			<%= link_to user_facebook_omniauth_authorize_path, class:"btn btn-social btn-facebook" do%>
+			      <span class="fa fa-facebook"></span> Sign in with Facebook
 			<% end %>
 			<br>
 			<br>
