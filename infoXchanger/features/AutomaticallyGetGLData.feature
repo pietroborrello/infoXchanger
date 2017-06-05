@@ -9,7 +9,7 @@ Scenario: User Logs in with GL
  And I am signed in with Google_oauth2 provider
  Then I should be on the home page
  And I should see "Successfully authenticated from Google account."
- When I follow "my Profile"
+ When I follow "My Profile"
  Then I should be on the users_myprofile page
  And I should see "First Name: John"
  And I should see "Last Name: Smith"

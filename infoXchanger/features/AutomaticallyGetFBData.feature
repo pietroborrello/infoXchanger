@@ -9,7 +9,7 @@ Scenario: User Logs in with FB
  And I am signed in with Facebook provider
  Then I should be on the home page
  And I should see "Successfully authenticated from Facebook account."
- When I follow "my Profile"
+ When I follow "My Profile"
  Then I should be on the users_myprofile page
  And I should see "First Name: John"
  And I should see "Last Name: Smith"
