@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
+  get 'scannedtokens/share'
 
   get 'scannedtokens/scanned'
+  get 'scannedtokens/share'
   get 'scannedtokens/whoscannedme'
   get 'tokens/mytokens'
   get 'scan', to: 'home#scan'
@@ -13,6 +15,7 @@ Rails.application.routes.draw do
   get 'users/search', to: 'users#search'
   get 'users/select', to: 'users#select'
   get 'users/token', to: 'users#token'
+
   devise_for :users, controllers: {:omniauth_callbacks => "users/omniauth_callbacks", sessions: 'users/sessions', registrations: 'users/registrations', passwords: 'users/passwords' }
   resources :users do
     resources :tokens

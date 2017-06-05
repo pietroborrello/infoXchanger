@@ -1,0 +1,12 @@
+<% if @user != nil %>
+<h3>Seleziona il token che vuoi condividere con : <%= @user.email %></h3>
+<br>
+id = <%= (@user.id) %>
+<% @tokens.each do |token| %>
+  <%= render partial: 'previewShare', locals: {token: token.token} %>
+  <br>
+<% end %>
+<% else %>
+  <h1>non puoi condividere con l'utente selezionato:</h1>
+  <% end %>
+<%= link_to 'Home', root_path %>

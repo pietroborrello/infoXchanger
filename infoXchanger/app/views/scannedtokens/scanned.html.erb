@@ -1,7 +1,16 @@
-<h1>Scanned:</h1>
+<% if @user != nil %>
+<h1>Select the token to would you share :</h1>
 <br>
+<%= debug(@user) %>
 <% @tokens.each do |token| %>
-  <%= render partial: 'preview', locals: {token: token.token} %>
+  <%= render partial: 'previewShare', locals: {token: token.token} %>
   <br>
 <% end %>
+<% else %>
+  <h1>Scanned:</h1>
+  <% @tokens.each do |token| %>
+    <%= render partial: 'preview', locals: {token: token.token} %>
+  <br>
+<% end %>
+  <% end %>
 <%= link_to 'Back', root_path %>
