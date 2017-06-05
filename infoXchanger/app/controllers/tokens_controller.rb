@@ -37,6 +37,7 @@ class TokensController < ApplicationController
   def show
     begin
       @token = Token.find(params[:id])
+      authorize! :show, @token
       @qrlink = root_url + '?t=' + @token.token_hash
       @qr = RQRCode::QRCode.new( @qrlink, :size => 6, :level => :h )
     rescue ActiveRecord::RecordNotFound => e
@@ -45,4 +46,20 @@ class TokensController < ApplicationController
       redirect_to root_path, flash: {:alert => 'Token lenght not valid, please contact the administrator'}
     end
   end
+
+  def mytokens
+  	@tokens = Token.where(user: current_user)
+  	@info = @@info
+  end
+
+  def destroy
+    @token = Token.find(params[:id])
+    authorize! :destroy, @token
+    @scan_token = ScannedToken.find_by(token_id: params[:id])
+    if @scan_token
+    	@scan_token.destroy
+    end
+    @token.destroy
+    redirect_to :tokens_mytokens
+    end
 end

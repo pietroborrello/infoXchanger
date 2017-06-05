@@ -7,7 +7,9 @@ class User < ApplicationRecord
 
   validates :first_name, presence: true
   validates :last_name, presence: true
-  has_many :tokens
+  has_many :tokens, dependent: :destroy
+  has_many :scanned_tokens, foreign_key: "scanner_id", dependent: :destroy
+  has_many :whoscannedme_tokens, foreign_key: "scanned_id", class_name: "ScannedToken", dependent: :destroy
 
    def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -18,7 +20,7 @@ class User < ApplicationRecord
       user.image_url = auth.info.image
     end
   end
-  
+
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]

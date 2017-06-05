@@ -22,6 +22,18 @@ Given /^I am a registered user$/ do
   @user = User.create!(:first_name => 'user', :last_name => 'user', :email => 'user@user.com', :password => 'useruser', :password_confirmation => 'useruser')
 end
 
+Given /^another user exists$/ do
+  @user = User.create!(:first_name => 'fake', :last_name => 'fake', :email => 'fake@user.com', :password => 'useruser', :password_confirmation => 'useruser')
+end
+
+When /^I press Delete button$/ do
+  visit('/admin/users/0/delete')
+end
+
+When /^I press "Yes, I'm sure" button$/ do
+  element = find_by_id('edit_user_0')
+  Capybara::RackTest::Form.new(page.driver, element.native).submit
+end
 
 Given /^I am not a registered user$/ do
   @user = nil
@@ -29,6 +41,11 @@ end
 
 Given /^I am a logged in user$/ do
   @user = User.create!(:first_name => 'user', :last_name => 'user', :email => 'user@user.com', :password => 'useruser')
+  login(@user.email, @user.password)
+end
+
+Given /^I am a logged in admin user$/ do
+  @user = User.create!(:first_name => 'user', :last_name => 'user',admin: true, :email => 'user@user.com', :password => 'useruser')
   login(@user.email, @user.password)
 end
 

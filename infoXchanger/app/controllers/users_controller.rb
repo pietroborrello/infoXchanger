@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   @@info =
   [:address,
   :born_on,
@@ -32,13 +31,21 @@ class UsersController < ApplicationController
         end
       end
     rescue ActiveRecord::RecordNotFound => e
-      redirect_to root_path, flash: {:alert => 'No user found'}
+      redirect_to root_path, flash: {:alert => 'No user found'} and return
+    end
+    #select the way data are presented to client
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "show"
+      end
     end
   end
 
   def edit
     begin
       @user = User.find(params[:id])
+      authorize! :edit, @user
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'No user found'}
     end
@@ -47,12 +54,13 @@ class UsersController < ApplicationController
   def update
     begin
       @user = User.find(params[:id])
+      authorize! :update, @user
     rescue ActiveRecord::RecordNotFound => e
-      redirect_to root_path, flash: {:alert => 'No user found'}
+      redirect_to root_path, flash: {:alert => 'No user found'} and return
     end
   	if @user.update_attributes(user_params)
   		flash[:success] = "Profile updated"
-  		redirect_to users_myprofile_path
+  		redirect_to users_myprofile_path and return
   	else
       flash[:alert] = "Please Retry"
   		render 'edit'
@@ -75,7 +83,7 @@ class UsersController < ApplicationController
       query = params[:query][0]
       min_len = 3
       if query.length < min_len
-        redirect_to root_path, flash: {:alert => "You have to insert at least #{min_len} characters to search for a user"}
+        redirect_to root_path, flash: {:alert => "You have to insert at least #{min_len} characters to search for a user"} and return
       else
         query = query.split(' ')
         @users = User.where('first_name IN (?) OR last_name IN (?) OR email IN (?)', query, query, query)

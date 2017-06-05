@@ -7,7 +7,7 @@ Scenario: WhoScannedMe List
  Given I am a logged in user
  And I am on the home page
  And I have been previously scanned by Mario@mario.com
- When I press "Who Scanned Me"
+ When I follow "Who Scanned Me"
  Then I should be on the scannedtokens_whoscannedme page
  And I should see "Who Scanned Me"
  And I should see "Mario@mario.com"

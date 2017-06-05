@@ -5,6 +5,7 @@ RSpec.describe UsersController, type: :controller do
 	describe "GET #show" do
 		before :each do
 			@user = FactoryGirl.create(:user, id: 0, first_name: "Lawrence", last_name: "Smith", email: "lawrence.smith@fake.com")
+			sign_in @user
 		end
 
 		it "renders the :show template" do
@@ -17,6 +18,7 @@ RSpec.describe UsersController, type: :controller do
 
 		before :each do
 			@user = FactoryGirl.create(:user,id:0, first_name: "Lawrence", last_name: "Smith", email: "lawrence.smith@fake.com")
+			sign_in @user
 		end
 
 		context "valid attributes" do
@@ -54,6 +56,7 @@ RSpec.describe UsersController, type: :controller do
 
 		before :each do
 			@user = FactoryGirl.create(:user, id: 0, first_name: "Lawrence", last_name: "Smith", email: "lawrence.smith@fake.com")
+			sign_in @user
 		end
 
 		context "valid user" do

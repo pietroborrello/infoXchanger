@@ -1,0 +1,16 @@
+<br><br>
+<h1><%= @user.first_name + ' ' + @user.last_name%><br></h1>
+<% if @user.image_url %>
+  <%= image_tag(@user.image_url, :alt => "profile image") %><br>
+<% else %>
+  <%= image_tag("/images/blank_profile.png", :alt => "login with Facebook to get an image") %><br>
+<% end %>
+<br>
+<strong>First Name:</strong> <%= @user.first_name %><br>
+<strong>Last Name: </strong><%= @user.last_name %><br>
+<strong>Email: </strong><%= @user.email %><br><br>
+<% if @token %>
+  <% @token.info.split(' ').each do |field| %>
+    <strong><%=@info[field.to_i].to_s.humanize%></strong>: <%= @user.send(@info[field.to_i]) %><br>
+  <% end %>
+<% end %>
