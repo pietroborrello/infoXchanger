@@ -24,7 +24,7 @@
 		td.black { border-color: #000; }
 		td.white { border-color: #fff; }
 	</style>
-	<%= raw RQRCode::QRCode.new( root_url + '?t=' + token.token_hash, :size => 6, :level => :h ).as_html %> <br>
+	<%= raw RQRCode::QRCode.new( root_url + '?t=' + token.token_hash, :size => ENV['QR_SIZE'].to_i, :level => :h ).as_html %> <br>
 	<%= link_to root_url + '?t=' + token.token_hash, root_url + '?t=' + token.token_hash %>
   </div>
   <div class='col-sm-1'>
