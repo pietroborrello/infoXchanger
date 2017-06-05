@@ -13,36 +13,44 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#"></a>
           <%= link_to root_path, class: "navbar-brand" do %>
             <span class="fa fa-xing"></span> InfoXchanger
           <% end %>
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
         </div>
         <% if user_signed_in? %>
-          <ul class="nav navbar-nav">
-            <li><%= link_to 'My Tokens', tokens_mytokens_path%></li>
-            <li><%= link_to 'Scanned Tokens', scannedtokens_scanned_path%></li>
-            <li><%= link_to 'Who Scanned Me', scannedtokens_whoscannedme_path%></li>
-          </ul>
-          <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to users_myprofile_path  do%>
-                <span class="fa fa-user"></span> My Profile <%end%></li>
-            <li><%= link_to destroy_user_session_path, method: :delete do %>
-                <span class="fa fa-sign-out"></span> Logout <%end%></li>
-            <% if current_user.admin? %>
-              <li><%= link_to rails_admin_path  do%>
-                Admin Dashboard
-                <% end %>
-              </li>
-            <% end %>
-          </ul>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <li><%= link_to 'My Tokens', tokens_mytokens_path%></li>
+              <li><%= link_to 'Scanned Tokens', scannedtokens_scanned_path%></li>
+              <li><%= link_to 'Who Scanned Me', scannedtokens_whoscannedme_path%></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to users_myprofile_path  do%>
+                  <span class="fa fa-user"></span> My Profile <%end%></li>
+              <li><%= link_to destroy_user_session_path, method: :delete do %>
+                  <span class="fa fa-sign-out"></span> Logout <%end%></li>
+              <% if current_user.admin? %>
+                <li><%= link_to rails_admin_path  do%>
+                  Admin Dashboard
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
         <% else %>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to new_session_path(:user) do %>
-              <span class="fa fa-sign-in"></span> Sign In <%end%></li>
-          <li><%= link_to new_registration_path(:user) do %>
-              <span class="fa fa-user-plus"></span> Register <%end%></li>
-        </ul>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li><%= link_to new_session_path(:user) do %>
+                  <span class="fa fa-sign-in"></span> Sign In <%end%></li>
+              <li><%= link_to new_registration_path(:user) do %>
+                  <span class="fa fa-user-plus"></span> Register <%end%></li>
+            </ul>
+          </div>
         <% end %>
       </div>
       <% if notice %>
