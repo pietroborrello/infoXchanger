@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   @@info =
   [:address,
   :born_on,
@@ -46,6 +45,7 @@ class UsersController < ApplicationController
   def edit
     begin
       @user = User.find(params[:id])
+      authorize! :edit, @user
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'No user found'}
     end
@@ -54,6 +54,7 @@ class UsersController < ApplicationController
   def update
     begin
       @user = User.find(params[:id])
+      authorize! :update, @user
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'No user found'} and return
     end
