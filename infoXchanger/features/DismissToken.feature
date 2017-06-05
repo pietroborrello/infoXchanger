@@ -10,7 +10,7 @@ Scenario: Dismiss QRToken
  And I check "select_all"
  And I press "Generate Token"
  And I follow "Home"
- And I press "My Tokens"
+ And I follow "My Tokens"
  Then I should be on the tokens_mytokens page
  And I should see "user"
  When I press "Dismiss this token"

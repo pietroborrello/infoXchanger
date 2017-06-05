@@ -10,15 +10,50 @@
   </head>
 
   <body>
-
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#"></a>
+          <%= link_to root_path, class: "navbar-brand" do %>
+            <span class="fa fa-xing"></span> InfoXchanger
+          <% end %>
+        </div>
+        <% if user_signed_in? %>
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'My Tokens', tokens_mytokens_path%></li>
+            <li><%= link_to 'Scanned Tokens', scannedtokens_scanned_path%></li>
+            <li><%= link_to 'Who Scanned Me', scannedtokens_whoscannedme_path%></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to users_myprofile_path  do%>
+                <span class="fa fa-user"></span> My Profile <%end%></li>
+            <li><%= link_to destroy_user_session_path, method: :delete do %>
+                <span class="fa fa-sign-out"></span> Logout <%end%></li>
+            <% if current_user.admin? %>
+              <li><%= link_to rails_admin_path  do%>
+                Admin Dashboard
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to new_session_path(resource_name) do %>
+              <span class="fa fa-sign-in"></span> Sign In <%end%></li>
+          <li><%= link_to new_registration_path(resource_name) do %>
+              <span class="fa fa-user-plus"></span> Register <%end%></li>
+        </ul>
+        <% end %>
+      </div>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
+    </nav>
     <div class="container-fluid">
-          <%= yield %>
+        <%= yield %>
     </div>
   </body>
 </html>
