@@ -1,36 +1,11 @@
-<h1 align=center>InfoXchanger</h1>
-<hr><br>
 <% if (devise_errors = devise_error_messages!)!= "" %>
   <div class="alert alert-danger">
     <%= devise_errors%>
   </div>
 <% end %>
-<div class"row">
-	<button data-target="#description" class="btn btn-default col-lg-4 col-lg-offset-4" data-toggle="collapse">
-		<span class="fa fa-info"></span> What is InfoXchanger?
-	</button>
-</div>
-<div class"row">
-	<div id="description" class="text-center col-lg-4 col-lg-offset-4 collapse">
-		<br>
-		<p>InfoXchanger is a totally new way to share personal details easily and quickly.
-		By registering yourself to this website, you can create your own profile and
-		update it whenever you want with new information about yourself. The main purpose
-		of the application is to allow all the registered users to select a subset of
-		their personal details, to create a QRCode that contains them and to share it
-		with other users. By this way, you can comunicate what you want instanly and
-		without papers, pens or notes. </p>
-		<p>You can see all the QRCodes you have ever generate and share them again, if
-		you need it; you can have access to the QRCodes you have scanned and there's
-		the chance to save information of other users you have locally, into you own PC;
-		you can also track all the users that scan your QRCodes and you can block the
-		access to your information to them. </p>
-		<p>If you think you won't need anymore a QRCode you have generated, you can dismiss
-		it and nobody will be more able to scan it; at last, if you think you won't need
-		anymore the services offered by this application, you can cancel your profile and
-		all the QRCodes you have created.</p>
-	</div>
-</div>
+<h1 align=center>InfoXchanger</h1>
+<hr><br>
+<%= render partial: 'home/siteinfo' %>
 <div class="container col-lg-2 col-lg-offset-5 text-center">
   <h2>Sign up</h2>
 
