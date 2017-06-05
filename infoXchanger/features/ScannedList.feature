@@ -7,7 +7,7 @@ Scenario: Scanned List
  Given I am a logged in user
  And I am on the home page
  And I had previously scanned Mario@mario.com
- When I press "Scanned Tokens"
+ When I follow "Scanned Tokens"
  Then I should be on the scannedtokens_scanned page
  And I should see "Scanned:"
  And I should see "Mario@mario.com"

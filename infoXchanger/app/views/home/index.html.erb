@@ -20,21 +20,6 @@
       <% end %>
     </div>
   </div>
-  <br>
-  <div class="row">
-    <div class="col-xs-6 text-right">
-      <%= button_to "Scanned Tokens", scannedtokens_scanned_path, method: :get , :class => 'btn btn-primary'%>
-    </div>
-    <div class="col-xs-6 text-left">
-      <%= button_to "Who Scanned Me", scannedtokens_whoscannedme_path, method: :get , :class => 'btn btn-primary'%>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-	<div class="col-xs-6 text-right">
-      <%= button_to "My Tokens", tokens_mytokens_path, method: :get , :class => 'btn btn-primary'%>
-    </div>
-  </div>
   <br><br>
   <% if user_signed_in? %>
     Logged in as <strong><%= current_user.email %></strong>.<br>
