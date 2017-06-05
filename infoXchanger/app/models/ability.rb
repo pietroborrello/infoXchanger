@@ -14,7 +14,7 @@ class Ability
       can :dashboard                  # allow access to dashboard
     else
       can [:crud, :myprofile], User, id: user.id
-      can :show, Token, user_id: user.id
+      can [:show, :destroy], Token, user_id: user.id
     end
     #
     # The first argument to `can` is the action you are giving the user
