@@ -39,7 +39,10 @@ module NavigationHelpers
 	     users_select_path
 
     when /^the admin_users_delete page$/
-       admin_users_delete_path(1)
+       '/admin/users/0/delete'
+
+    when /^the admin page$/
+      '/admin'
 
     when /^the user_token page$/
       user_token_path(@user, 1)

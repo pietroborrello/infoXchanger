@@ -26,6 +26,14 @@ Given /^another user exists$/ do
   @user = User.create!(:first_name => 'fake', :last_name => 'fake', :email => 'fake@user.com', :password => 'useruser', :password_confirmation => 'useruser')
 end
 
+When /^I press Delete button$/ do
+  visit('/admin/users/0/delete')
+end
+
+When /^I press "Yes, I'm sure" button$/ do
+  element = find_by_id('edit_user_0')
+  Capybara::RackTest::Form.new(page.driver, element.native).submit
+end
 
 Given /^I am not a registered user$/ do
   @user = nil
