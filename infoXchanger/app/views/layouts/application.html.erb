@@ -18,17 +18,25 @@
             <span class="fa fa-xing"></span> InfoXchanger
           <% end %>
         </div>
-        <ul class="nav navbar-nav">
-          <li>
-            <%= link_to 'My Tokens', tokens_mytokens_path%>
-          </li>
-          <li>
-            <%= link_to 'Scanned Tokens', scannedtokens_scanned_path%>
-          </li>
-          <li>
-            <%= link_to 'Who Scanned Me', scannedtokens_whoscannedme_path%>
-          </li>
-        </ul>
+        <% if user_signed_in? %>
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'My Tokens', tokens_mytokens_path%></li>
+            <li><%= link_to 'Scanned Tokens', scannedtokens_scanned_path%></li>
+            <li><%= link_to 'Who Scanned Me', scannedtokens_whoscannedme_path%></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to users_myprofile_path  do%>
+                <span class="fa fa-user"></span> My Profile <%end%></li>
+            <li><%= link_to destroy_user_session_path, method: :delete do %>
+                <span class="fa fa-sign-out"></span> Logout <%end%></li>
+            <% if current_user.admin? %>
+              <li><%= link_to rails_admin_path  do%>
+                Admin Dashboard
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
       </div>
       <% if notice %>
         <p class="alert alert-success"><%= notice %></p>
@@ -38,7 +46,7 @@
       <% end %>
     </nav>
     <div class="container-fluid">
-          <%= yield %>
+        <%= yield %>
     </div>
   </body>
 </html>
