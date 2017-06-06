@@ -19,8 +19,14 @@ class UsersController < ApplicationController
       if !params[:t]
         @user = User.find(params[:id])
         @token = nil
+        if BlockedUser.exists?(blocked: current_user) && BlockedUser.exists?(blocker: @user.id)
+			redirect_to root_path, alert: "You don't have the permission to see this information, maybe the user had blocked you" and return
+		end
       else
         @token = Token.find_by(token_hash: params[:t])
+        if BlockedUser.exists?(blocked: current_user) && BlockedUser.exists?(blocker: @token.user_id)
+			redirect_to root_path, alert: "You don't have the permission to see this information, maybe the user had blocked you" and return
+        end
         if !@token
           raise ActiveRecord::RecordNotFound
         end
@@ -90,6 +96,7 @@ class UsersController < ApplicationController
         query.each do |query|
           res = User.where('first_name LIKE ? OR last_name LIKE ? OR email LIKE ?', '%' + query + '%', '%' + query + '%', '%' + query + '%')
           @users = @users.or(res)
+          @users = @users.reject{ |user| BlockedUser.exists?(blocked: current_user.id) && BlockedUser.exists?(blocker: user.id)}
         end
         if !@users.empty?
           render users_search_path

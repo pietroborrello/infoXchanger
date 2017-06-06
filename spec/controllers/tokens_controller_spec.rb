@@ -27,4 +27,18 @@ RSpec.describe TokensController, type: :controller do
 		end
 	end
 
+	describe "DELETE #destroy" do
+		before :each do
+			@user = FactoryGirl.create(:user)
+			sign_in @user
+			@token1 = FactoryGirl.create(:token, id: 1, user: @user)
+			@token2 = FactoryGirl.create(:token, id: 2, user: @user, token_hash: 'ffffffffffff')
+		end
+		
+		it "destroys the token" do 
+			delete :destroy, params: {id: @token1.id, user_id: @user.id}
+			expect(response).to redirect_to '/tokens/mytokens'
+			expect(Token.where(id: @token1.id)).not_to exist
+		end
+	end
 end

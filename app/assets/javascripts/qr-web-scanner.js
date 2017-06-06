@@ -331,7 +331,32 @@ var QRWebScanner = (function () {
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
             window.URL.createObjectURL = window.URL.createObjectURL || window.URL.webkitCreateObjectURL || window.URL.mozCreateObjectURL || window.URL.msCreateObjectURL;
 
-            navigator.getUserMedia({video: true},
+            var options = true;
+            if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
+            {
+                try{
+                    navigator.mediaDevices.enumerateDevices()
+                    .then(function(devices) {
+                      devices.forEach(function(device) {
+                        if (device.kind === 'videoinput') {
+                          if(device.label.toLowerCase().search("back") >-1)
+                            options=[{'sourceId': device.deviceId}] ;
+                        }
+                        console.log(device.kind + ": " + device.label +
+                                    " id = " + device.deviceId);
+                      });
+                    })
+                }
+                catch(e)
+                {
+                    console.log(e);
+                }
+            }
+            else{
+                console.log("no navigator.mediaDevices.enumerateDevices" );
+            }
+
+            navigator.getUserMedia({video: options},
                 function (stream) {
 
                     Get.videoBox().src = window.URL.createObjectURL(stream);

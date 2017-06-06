@@ -40,13 +40,19 @@ Given /^I am not a registered user$/ do
 end
 
 Given /^I am a logged in user$/ do
-  @user = User.create!(:first_name => 'user', :last_name => 'user', :email => 'user@user.com', :password => 'useruser')
+  @user = User.create!(id: 100, :first_name => 'user', :last_name => 'user', :email => 'user@user.com', :password => 'useruser')
   login(@user.email, @user.password)
 end
 
 Given /^I am a logged in admin user$/ do
-  @user = User.create!(:first_name => 'user', :last_name => 'user',admin: true, :email => 'user@user.com', :password => 'useruser')
+  @user = User.create!(id: 100, :first_name => 'user', :last_name => 'user',admin: true, :email => 'user@user.com', :password => 'useruser')
   login(@user.email, @user.password)
+end
+
+Given /^I was previously logged in as (.*)$/ do |user|
+  @user = User.create!(id: 101, :first_name => user, :last_name => user, :email => user, :password => 'useruser')
+  login(@user.email, @user.password)
+  visit('/users/sign_out')
 end
 
 Given /^I am not authenticated$/ do

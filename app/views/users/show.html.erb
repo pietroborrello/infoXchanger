@@ -1,3 +1,4 @@
+
 <div class"row">
   <div class="col-lg-3">
     <% if @user.image_url %>
@@ -19,10 +20,17 @@
       <%= link_to users_show_path t: @token.token_hash, format: :pdf do %>
         Save as PDF <span class="fa fa-file-pdf-o"></span>
       <% end %>
-      &ensp;|&ensp;
-    <% else %>
-      <br><br>
-    <% end %>
+      &ensp; | &ensp;
+    <% else %>      
+    <% end %>    
     <%= link_to 'Home', root_path%>
   </div>
+  <div class="col-lg-3">
+	<% if @user.id != current_user.id %>
+	<br>
+	<%= button_to "Block this user", user_blockeduser_path(@user.id,@user.id), method: :put , :class => 'btn btn-danger'%>
+	<br>
+	<%end%>
+  </div>
 </div>
+
