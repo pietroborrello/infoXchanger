@@ -345,7 +345,7 @@ var QRWebScanner = (function () {
                         console.log(device.kind + ": " + device.label +
                                     " id = " + device.deviceId);
                       });
-                      console.log('OPTIONS ' + options);
+                      document.write('OPTIONS ' + options);
                       navigator.getUserMedia({video: options},
                           function (stream) {
 
