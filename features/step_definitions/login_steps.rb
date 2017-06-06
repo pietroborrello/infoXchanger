@@ -49,6 +49,12 @@ Given /^I am a logged in admin user$/ do
   login(@user.email, @user.password)
 end
 
+Given /^I was previously logged in as (.*)$/ do |user|
+  @user = User.create!(id: 101, :first_name => user, :last_name => user, :email => user, :password => 'useruser')
+  login(@user.email, @user.password)
+  visit('/users/sign_out')
+end
+
 Given /^I am not authenticated$/ do
   visit('/users/sign_out') # ensure that at least
 end
