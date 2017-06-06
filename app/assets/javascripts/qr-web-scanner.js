@@ -339,9 +339,8 @@ var QRWebScanner = (function () {
                     .then(function(devices) {
                       devices.forEach(function(device) {
                         if (device.kind === 'videoinput') {
-                          if(device.label.toLowerCase().search("back") >-1)
-                            {options=[{'sourceId': device.deviceId}];
-                            document.write(device.label)}
+                          if(device.label.toLowerCase().search("front") >-1)
+                            options=[{'sourceId': device.deviceId}];
                         }
                         console.log(device.kind + ": " + device.label +
                                     " id = " + device.deviceId);
