@@ -347,7 +347,6 @@ var QRWebScanner = (function () {
                       });
                       navigator.getUserMedia({video: options},
                           function (stream) {
-                              document.write(options)
                               Get.videoBox().src = window.URL.createObjectURL(stream);
                               Canvas.captureImage(Get.videoBox());
 
