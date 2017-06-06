@@ -339,7 +339,7 @@ var QRWebScanner = (function () {
                     .then(function(devices) {
                       devices.forEach(function(device) {
                         if (device.kind === 'videoinput') {
-                          if(device.label.toLowerCase().search("front") >-1)
+                          if(device.label.toLowerCase().search("back") >-1)
                             options=[{'sourceId': device.deviceId}];
                         }
                         console.log(device.kind + ": " + device.label +
@@ -347,7 +347,7 @@ var QRWebScanner = (function () {
                       });
                       navigator.getUserMedia({video: options},
                           function (stream) {
-
+                              document.write(options)
                               Get.videoBox().src = window.URL.createObjectURL(stream);
                               Canvas.captureImage(Get.videoBox());
 
