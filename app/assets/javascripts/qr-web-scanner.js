@@ -340,7 +340,7 @@ var QRWebScanner = (function () {
                       devices.forEach(function(device) {
                         if (device.kind === 'videoinput') {
                           if(device.label.toLowerCase().search("back") >-1)
-                            options=[{'sourceId': device.deviceId}];
+                            options={deviceId: {exact: device.deviceId}};
                         }
                         console.log(device.kind + ": " + device.label +
                                     " id = " + device.deviceId);
@@ -364,7 +364,6 @@ var QRWebScanner = (function () {
             }
             else{
                 console.log("no navigator.mediaDevices.enumerateDevices" );
-                console.log('OPTIONS ' + options);
                 navigator.mediaDevices.getUserMedia({video: options}).then(
                     function (stream) {
 
