@@ -345,14 +345,14 @@ var QRWebScanner = (function () {
                         console.log(device.kind + ": " + device.label +
                                     " id = " + device.deviceId);
                       });
-                      navigator.getUserMedia({video: options},
+                      navigator.mediaDevices.getUserMedia({video: options}).then(
                           function (stream) {
                               Get.videoBox().src = window.URL.createObjectURL(stream);
                               Canvas.captureImage(Get.videoBox());
 
                               WebCam.state = true;
 
-                          }, function () {
+                          }).catch(function (error) {
                               console.log('With the video stream that something is wrong or the user banned :P');
                           });
                     })
@@ -365,7 +365,7 @@ var QRWebScanner = (function () {
             else{
                 console.log("no navigator.mediaDevices.enumerateDevices" );
                 console.log('OPTIONS ' + options);
-                navigator.getUserMedia({video: options},
+                navigator.mediaDevices.getUserMedia({video: options}).then(
                     function (stream) {
 
                         Get.videoBox().src = window.URL.createObjectURL(stream);
@@ -373,7 +373,7 @@ var QRWebScanner = (function () {
 
                         WebCam.state = true;
 
-                    }, function () {
+                    }).catch(function (error) {
                         console.log('With the video stream that something is wrong or the user banned :P');
                     });
             }
