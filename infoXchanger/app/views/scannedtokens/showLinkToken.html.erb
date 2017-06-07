@@ -1,0 +1,35 @@
+<div class="text-center">
+<h1>Il QRCode e QRCodeLink del Token selezionato sono i seguenti</h1>
+<style media="screen" type="text/css">
+
+table {
+  border-width: 0;
+  border-style: none;
+  border-color: #0000ff;
+  border-collapse: collapse;
+  margin: auto;
+}
+
+td {
+  border-left: solid 10px #000;
+  padding: 0;
+  margin: 0;
+  width: 0px;
+  height: 10px;
+}
+
+td.black { border-color: #000; }
+td.white { border-color: #fff; }
+</style>
+<br><br>
+<br><br>
+<%= raw @qr.as_html %>
+<br><br>
+<div class="col-lg-10 col-lg-offset-1 text-center">
+  <strong><%= link_to @qrlink, @qrlink %></strong>
+<br><br>
+<br><br>
+<%= link_to 'Home', root_path%> &ensp;|&ensp;
+<%= link_to download_path(data: @qrlink), method: :post do %>
+  Download as PNG <span class="fa fa-download"></span>
+<% end %>

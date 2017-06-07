@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
   get 'scannedtokens/share'
-
+  get 'scannedtokens/showLinkToken'
+  get 'tokens/show'
   get 'scannedtokens/scanned'
   get 'scannedtokens/share'
   get 'scannedtokens/whoscannedme'

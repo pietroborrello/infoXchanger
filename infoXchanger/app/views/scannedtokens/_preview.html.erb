@@ -17,7 +17,8 @@
     </strong>
     <br>
     <%= link_to 'Show', root_url + '?t=' + token.token_hash %>
-    
+    <%= link_to 'ShowLinkToken',scannedtokens_showLinkToken_path(id: token.id) %>
+    <br>
   </div>
 </div>
 <hr/>
