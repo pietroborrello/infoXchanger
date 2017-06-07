@@ -19,3 +19,7 @@ end
 When /^I visit the token link$/ do
   visit "/?t=fakefakefake"
 end
+
+When /^I visit the show token link$/ do
+  visit "scannedtokens/showLinkToken?id=10"
+end
