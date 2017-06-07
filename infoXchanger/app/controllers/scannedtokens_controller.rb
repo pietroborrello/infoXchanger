@@ -3,11 +3,6 @@ class ScannedtokensController < ApplicationController
     @tokens = ScannedToken.where(scanner: current_user)
   end
 
-  def share
-    @tokens = ScannedToken.where(scanner: current_user)
-    @user = User.find(params[:id])
-  end
-
   def showLinkToken
     begin
       @token = Token.find(params[:id])
