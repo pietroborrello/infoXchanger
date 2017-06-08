@@ -19,16 +19,16 @@ class UsersController < ApplicationController
       if !params[:t]
         @user = User.find(params[:id])
         @token = nil
-        if BlockedUser.exists?(blocked: current_user) && BlockedUser.exists?(blocker: @user.id)
+        if BlockedUser.exists?(blocked: current_user, blocker: @user.id)
 			redirect_to root_path, alert: "You don't have the permission to see this information, maybe the user had blocked you" and return
 		end
       else
         @token = Token.find_by(token_hash: params[:t])
-        if BlockedUser.exists?(blocked: current_user) && BlockedUser.exists?(blocker: @token.user_id)
-			redirect_to root_path, alert: "You don't have the permission to see this information, maybe the user had blocked you" and return
-        end
         if !@token
           raise ActiveRecord::RecordNotFound
+        end
+        if BlockedUser.exists?(blocked: current_user, blocker: @token.user_id)
+			       redirect_to root_path, alert: "You don't have the permission to see this information, maybe the user had blocked you" and return
         end
         @user = User.find(@token.user_id)
         @info = @@info
@@ -94,10 +94,11 @@ class UsersController < ApplicationController
         query = query.split(' ')
         @users = User.where('first_name IN (?) OR last_name IN (?) OR email IN (?)', query, query, query)
         query.each do |query|
+          next if query.length < min_len
           res = User.where('first_name LIKE ? OR last_name LIKE ? OR email LIKE ?', '%' + query + '%', '%' + query + '%', '%' + query + '%')
           @users = @users.or(res)
-          @users = @users.reject{ |user| BlockedUser.exists?(blocked: current_user.id) && BlockedUser.exists?(blocker: user.id)}
         end
+        @users = @users.reject{ |user| BlockedUser.exists?(blocked: current_user.id, blocker: user.id)}
         if !@users.empty?
           render users_search_path
         else

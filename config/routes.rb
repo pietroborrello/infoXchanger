@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'scannedtokens/scanned'
   get 'scannedtokens/whoscannedme'
+  get 'scannedtokens/show'
   get 'tokens/mytokens'
   get 'blockedusers/show'
   get 'scan', to: 'home#scan'

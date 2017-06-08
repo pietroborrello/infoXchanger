@@ -9,33 +9,34 @@
 
 	<label class="li" ><%= check_box_tag :select_all %> &nbsp; <font color='red' ><i><%= "SELECT ALL" %></i></font></label><br/>
 
-	<label class="li"><%= check_box_tag :address %>&nbsp; <%= "Address" %></label><br/>
+	<label class="li"><%= check_box_tag :address %>&nbsp; <%= "Address: " %></label> <%= current_user.address %><br/>
 
-	<label class="li"><%= check_box_tag :born_on %>&nbsp; <%= "Born on" %></label><br/>
+	<label class="li"><%= check_box_tag :born_on %>&nbsp; <%= "Born on: " %></label> <%= current_user.born_on %><br/>
 
-	<label class="li"><%= check_box_tag :born_at %>&nbsp; <%= "Born at" %></label><br/>
+	<label class="li"><%= check_box_tag :born_at %>&nbsp; <%= "Born at: " %></label> <%= current_user.born_at %><br/>
 
-	<label class="li"><%= check_box_tag :telephone %>&nbsp; <%= "Telephone" %></label><br/>
+	<label class="li"><%= check_box_tag :telephone %>&nbsp; <%= "Telephone: " %></label> <%= current_user.telephone %><br/>
 
-	<label class="li"><%= check_box_tag :website %>&nbsp; <%= "Website" %></label><br/>
+	<label class="li"><%= check_box_tag :website %>&nbsp; <%= "Website: " %></label> <%= current_user.website %><br/>
 
-	<label class="li"><%= check_box_tag :social_number %>&nbsp; <%= "Social number" %></label><br/>
+	<label class="li"><%= check_box_tag :social_number %>&nbsp; <%= "Social number: " %></label> <%= current_user.social_number %><br/>
 
-    <label class="li"><%= check_box_tag :id_number %>&nbsp; <%= "ID number" %></label><br/>
+    <label class="li"><%= check_box_tag :id_number %>&nbsp; <%= "ID number: " %></label> <%= current_user.id_number %><br/>
 
-	<label class="li"><%= check_box_tag :license_number %> &nbsp;<%= "License number" %></label><br/>
+	<label class="li"><%= check_box_tag :license_number %> &nbsp;<%= "License number: " %></label> <%= current_user.license_number %><br/>
 
-	<label class="li"><%= check_box_tag :insurance_company %>&nbsp; <%= "Insurance company" %></label><br/>
+	<label class="li"><%= check_box_tag :insurance_company %>&nbsp; <%= "Insurance company: " %></label> <%= current_user.insurance_company %><br/>
 
-	<label class="li"><%= check_box_tag :car_plate %>&nbsp; <%= "Car plate" %></label><br/>
+	<label class="li"><%= check_box_tag :car_plate %>&nbsp; <%= "Car plate: " %></label> <%= current_user.car_plate %><br/>
 
-	<label class="li"><%= check_box_tag :weight %> &nbsp;<%= "Weight" %></label><br/>
+	<label class="li"><%= check_box_tag :weight %> &nbsp;<%= "Weight: " %></label> <%= current_user.weight %><br/>
 
-	<label class="li"><%= check_box_tag :height %>&nbsp; <%= "Height" %></label><br/>
+	<label class="li"><%= check_box_tag :height %>&nbsp; <%= "Height: " %></label> <%= current_user.height %><br/>
 
-	<label class="li"><%= check_box_tag :blood_group %>&nbsp; <%= "Blood group" %></label><br/>
+	<label class="li"><%= check_box_tag :blood_group %>&nbsp; <%= "Blood group: " %></label> <%= current_user.blood_group %><br/>
 
 	<br>
 	<%= submit_tag "Generate Token", class: "btn btn-primary" %> &nbsp;&nbsp;
+	<%= link_to 'Edit Profile', edit_user_path(current_user), :class => 'navbar-link' %> |
 	<%= link_to "Back", :back %>
 <% end %>

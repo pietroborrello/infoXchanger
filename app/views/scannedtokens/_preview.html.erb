@@ -16,7 +16,9 @@
       <%= token.user.email %>
     </strong>
     <br>
-    <%= link_to 'Show', root_url + '?t=' + token.token_hash %>
+    <%= link_to 'Show', root_url + '?t=' + token.token_hash %> &nbsp;|&nbsp;
+    <%= link_to 'Share',scannedtokens_show_path(t: token.token_hash) %>
+    <br>
   </div>
 </div>
 <hr/>
