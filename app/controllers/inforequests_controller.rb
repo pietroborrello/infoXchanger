@@ -1,10 +1,5 @@
 class InforequestsController < ApplicationController
 
-  def show
-    @requests = [{asker: 1, asked: current_user.id, info: '4 5 6 7'},{asker: 1, asked: current_user.id, info: '4 5 6 7'}]
-    #@requests = Inforequest.where(asked: current_user)
-  end
-	
 	@@info =
 	  [:address,
 	  :born_on,
@@ -19,23 +14,56 @@ class InforequestsController < ApplicationController
 	  :weight,
 	  :height,
 	  :blood_group]
-	  
+
 	@@asked = nil
-  
+
+  def show
+    @requests = Inforequest.where(asked: current_user)
+    @info = @@info
+  end
+
+  def reply
+    begin
+      @request = Inforequest.find(params[:id])
+      authorize! :destroy, @request
+      if params[:reply] == "deny"
+        Inforequest.destroy(params[:id])
+      elsif params[:reply] == "allow"
+        token_hash = SecureRandom.urlsafe_base64(18)
+        @token = current_user.tokens.create!(user: current_user, password: '', info: @request.info, token_hash: token_hash)
+        ScannedToken.create(scanner: @request.asker, scanned: current_user, token: @token)
+        Inforequest.destroy(params[:id])
+      end
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to root_path, flash: {:alert => 'Request not valid'} and return
+    rescue ActiveRecord::RecordNotUnique => e
+      redirect_to root_path, flash: {:alert => 'Token creation failed, please retry'} and return
+    end
+    redirect_to inforequests_show_path
+  end
+
 	def select
-		@@asked = User.find(params[:id])
-		render inforequests_select_path
+    begin
+  		@@asked = User.find(params[:id])
+  		render inforequests_select_path
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to root_path, flash: {:alert => 'Request not valid'}
+    end
 	end
 
 	def ask
 		info_str = ""
 		@@info.each do |info|
 		  if params[info] != nil
-			info_str << @@info.index(info).to_i.to_s << " "
+			     info_str << @@info.index(info).to_i.to_s << " "
 		  end
 		end
-		Inforequest.create!(asker: current_user, asked: @@asked, info: info_str)
-		redirect_to root_path, notice: "Information successfully sent"
+    if !BlockedUser.exists?(blocked: current_user, blocker: @@asked)
+      Inforequest.create!(asker: current_user, asked: @@asked, info: info_str)
+      redirect_to root_path, notice: "Information successfully sent"
+    else
+      redirect_to root_path, alert: "User not found"
+    end
 	end
 
 end

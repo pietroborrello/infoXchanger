@@ -21,18 +21,17 @@
         Save as PDF <span class="fa fa-file-pdf-o"></span>
       <% end %>
       &ensp; | &ensp;
-    <% else %>      
-    <% end %>     
+    <% else %>
+    <% end %>
   </div>
   <div class="col-lg-3">
-	<% if @user.id != current_user.id %>	
+	<% if @user.id != current_user.id %>
 	<br>
 	<%= button_to "Block this user", user_blockeduser_path(@user.id,@user.id), method: :put , :class => 'btn btn-danger'%>
 	<br>
-    <%= link_to 'Ask him a personal information', inforequests_select_path(id: @user.id), :class => 'navbar-link' %> 
+    <%= button_to 'Ask him personal information', inforequests_select_path(id: @user.id), :class => 'btn btn-info' %> 
 	<br><br>
 	<%end%>
 	<%= link_to 'Home', root_path%>
   </div>
 </div>
-
