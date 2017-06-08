@@ -2,7 +2,7 @@
 <br>
 <%= javascript_include_tag('select_all.js') %>
 
-<%= form_tag(inforequests_ask_path(current_user), {method: 'post', class: "form-inline"} ) do |f| %>
+<%= form_tag(inforequests_ask_path(current_user, asked: params[:id]), {method: 'post', class: "form-inline"} ) do |f| %>
 
 	<label class="li" ><%= check_box_tag :select_all %> &nbsp; <font color='red' ><i><%= "SELECT ALL" %></i></font></label><br/>
 

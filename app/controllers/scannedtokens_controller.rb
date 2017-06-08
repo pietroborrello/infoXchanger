@@ -1,7 +1,7 @@
 class ScannedtokensController < ApplicationController
   def scanned
-    @t = ScannedToken.where(scanner: current_user)
-	@tokens = @t.reject { |token| BlockedUser.exists?(blocked: current_user, blocker: token.scanned_id)}
+    @t = ScannedToken.where(scanner: current_user).order('created_at desc')
+	  @tokens = @t.reject { |token| BlockedUser.exists?(blocked: current_user, blocker: token.scanned_id)}
   end
 
   def whoscannedme
