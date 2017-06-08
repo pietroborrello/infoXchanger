@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170605132818) do
+ActiveRecord::Schema.define(version: 20170608160907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20170605132818) do
     t.datetime "updated_at", null: false
     t.index ["blocked_id"], name: "index_blocked_users_on_blocked_id"
     t.index ["blocker_id"], name: "index_blocked_users_on_blocker_id"
+  end
+
+  create_table "inforequests", force: :cascade do |t|
+    t.bigint "asker_id"
+    t.bigint "asked_id"
+    t.string "info"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["asked_id"], name: "index_inforequests_on_asked_id"
+    t.index ["asker_id"], name: "index_inforequests_on_asker_id"
   end
 
   create_table "scanned_tokens", force: :cascade do |t|
@@ -84,4 +94,6 @@ ActiveRecord::Schema.define(version: 20170605132818) do
 
   add_foreign_key "blocked_users", "users", column: "blocked_id"
   add_foreign_key "blocked_users", "users", column: "blocker_id"
+  add_foreign_key "inforequests", "users", column: "asked_id"
+  add_foreign_key "inforequests", "users", column: "asker_id"
 end
