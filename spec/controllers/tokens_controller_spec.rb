@@ -10,7 +10,8 @@ RSpec.describe TokensController, type: :controller do
 
 		it "creates a new token for the user" do
 			post :create, params: {user_id:0, address: 1, born_on:1, born_at:1}
-			expect(response).to redirect_to user_token_url(@user.id, 1)
+			@token_id = assigns(:token).id
+			expect(response).to redirect_to user_token_url(@user.id, @token_id)
 		end
 	end
 
