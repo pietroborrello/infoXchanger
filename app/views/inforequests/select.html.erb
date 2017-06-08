@@ -1,0 +1,38 @@
+<h1>Select info to ask</h1>
+<br>
+<%= javascript_include_tag('select_all.js') %>
+
+<%= form_tag(inforequests_ask_path(current_user), {method: 'post', class: "form-inline"} ) do |f| %>
+
+	<label class="li" ><%= check_box_tag :select_all %> &nbsp; <font color='red' ><i><%= "SELECT ALL" %></i></font></label><br/>
+
+	<label class="li"><%= check_box_tag :address %>&nbsp; <%= "Address" %></label><br/>
+
+	<label class="li"><%= check_box_tag :born_on %>&nbsp; <%= "Born on" %></label><br/>
+
+	<label class="li"><%= check_box_tag :born_at %>&nbsp; <%= "Born at" %></label><br/>
+
+	<label class="li"><%= check_box_tag :telephone %>&nbsp; <%= "Telephone" %></label><br/>
+
+	<label class="li"><%= check_box_tag :website %>&nbsp; <%= "Website" %></label><br/>
+
+	<label class="li"><%= check_box_tag :social_number %>&nbsp; <%= "Social number" %></label><br/>
+
+    <label class="li"><%= check_box_tag :id_number %>&nbsp; <%= "ID number" %></label><br/>
+
+	<label class="li"><%= check_box_tag :license_number %> &nbsp;<%= "License number" %></label><br/>
+
+	<label class="li"><%= check_box_tag :insurance_company %>&nbsp; <%= "Insurance company" %></label><br/>
+
+	<label class="li"><%= check_box_tag :car_plate %>&nbsp; <%= "Car plate" %></label><br/>
+
+	<label class="li"><%= check_box_tag :weight %> &nbsp;<%= "Weight" %></label><br/>
+
+	<label class="li"><%= check_box_tag :height %>&nbsp; <%= "Height" %></label><br/>
+
+	<label class="li"><%= check_box_tag :blood_group %>&nbsp; <%= "Blood group" %></label><br/>
+
+	<br>
+	<%= submit_tag "Ask", class: "btn btn-primary" %> &nbsp;&nbsp;
+	<%= link_to "Back", :back %>
+<% end %>
