@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :whoscannedme_tokens, foreign_key: "scanned_id", class_name: "ScannedToken", dependent: :destroy
   has_many :blocked, foreign_key: "blocked_id", class_name: "BlockedUser", dependent: :destroy
   has_many :blocker, foreign_key: "blocker_id", class_name: "BlockedUser", dependent: :destroy
+  has_many :asker, foreign_key: "asker_id", class_name: "Inforequest", dependent: :destroy
+  has_many :asked, foreign_key: "asked_id", class_name: "Inforequest", dependent: :destroy
   
 
    def self.from_omniauth(auth)
