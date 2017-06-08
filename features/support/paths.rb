@@ -44,8 +44,8 @@ module NavigationHelpers
     when /^the admin page$/
       '/admin'
 
-    when /^the scannedtokens_showLinkToken\s?page$/
-      '/scannedtokens/showLinkToken'
+    when /^the scannedtokens_show\s?page$/
+      '/scannedtokens/show'
 
     when /^the user_token page$/
       user_token_path(@user, 1)

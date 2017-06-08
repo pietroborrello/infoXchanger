@@ -10,9 +10,12 @@ class ScannedtokensController < ApplicationController
 
   def show
     begin
-      @token = Token.find(params[:id])
+      @token = Token.find_by(token_hash: params[:t])
+      if !@token
+        raise ActiveRecord::RecordNotFound
+      end
       @qrlink = root_url + '?t=' + @token.token_hash
-      @qr = RQRCode::QRCode.new( @qrlink, :size => 6, :level => :h )
+      @qr = RQRCode::QRCode.new( @qrlink, :size => ENV['QR_SIZE'].to_i, :level => :h )
       render 'tokens/show'
     rescue ActiveRecord::RecordNotFound => e
       redirect_to root_path, flash: {:alert => 'Token not valid'}
