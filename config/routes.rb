@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'inforequests/show'
+
+  get 'info_requests/show'
+
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
 
@@ -7,6 +11,8 @@ Rails.application.routes.draw do
   get 'scannedtokens/show'
   get 'tokens/mytokens'
   get 'blockedusers/show'
+  get 'inforequests/show'
+  get 'inforequests/reply'
   get 'scan', to: 'home#scan'
   post 'download', to:'home#download'
   get 'users/myprofile'

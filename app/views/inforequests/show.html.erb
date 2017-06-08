@@ -1,0 +1,12 @@
+<h3>Info Requests</h3>
+<% @requests.each do |request| %>
+  <%= render partial: '/users/preview', locals: {user: User.find(request[:asker])} %>
+  Asked Info:
+  <div class='col-sm-2'>
+  <%= button_to "Allow", inforequests_reply_path, params: {reply: 'allow'}, :class => 'btn btn-success'%>
+  <%= button_to "Deny", inforequests_reply_path, params: {reply: 'deny'}, :class => 'btn btn-danger'%>
+</div>
+
+  <hr/><br>
+<% end %>
+<%= link_to 'Back', root_path %>
