@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
 
+  get 'users/ask'
+  post 'users/sendRequest'
   get 'scannedtokens/scanned'
   get 'scannedtokens/whoscannedme'
   get 'tokens/mytokens'

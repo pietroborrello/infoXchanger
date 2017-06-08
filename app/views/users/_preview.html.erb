@@ -16,7 +16,9 @@
       <%= user.email %>
     </strong>
     <br>
-    <%= link_to 'Show', users_show_path(:id => user.id) %>
+    <%= link_to 'Show', users_show_path(:id => user.id) %>&nbsp;&nbsp;
+    <%= link_to 'Ask', users_ask_path(:id => user.id) %>
+
   </div>
 </div>
 <hr/>
