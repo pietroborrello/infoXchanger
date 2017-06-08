@@ -12,6 +12,6 @@ Scenario: Ask for an info
  Then I should be on the users_search page
  And I should see "prova@prova.com"
  When I follow "Show"
- And I follow "Ask him a personal information"
+ And I press "Ask him personal information"
  Then I should be on the inforequests_select page
  And I should see "Select info to ask"
