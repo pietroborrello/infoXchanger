@@ -30,7 +30,7 @@
 	<%= button_to "Block this user", user_blockeduser_path(@user.id,@user.id), method: :put , :class => 'btn btn-danger'%>
 	<br>
     <%= button_to 'Ask him personal information', inforequests_select_path(id: @user.id), :class => 'btn btn-info' %> 
-	<br><br>
+	<br>
 	<%end%>
 	<%= link_to 'Home', root_path%>
   </div>
