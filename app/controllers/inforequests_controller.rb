@@ -15,8 +15,6 @@ class InforequestsController < ApplicationController
 	  :height,
 	  :blood_group]
 
-	@@asked = nil
-
   def show
     @requests = Inforequest.where(asked: current_user)
     @info = @@info
@@ -43,23 +41,24 @@ class InforequestsController < ApplicationController
   end
 
 	def select
-    begin
-  		@@asked = User.find(params[:id])
-  		render inforequests_select_path
-    rescue ActiveRecord::RecordNotFound => e
-      redirect_to root_path, flash: {:alert => 'Request not valid'}
-    end
 	end
 
 	def ask
+    begin
+  		asked = User.find(params[:asked])
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to root_path, flash: {:alert => 'Request not valid'}
+    end
 		info_str = ""
 		@@info.each do |info|
 		  if params[info] != nil
 			     info_str << @@info.index(info).to_i.to_s << " "
 		  end
 		end
-    if !BlockedUser.exists?(blocked: current_user, blocker: @@asked)
-      Inforequest.create!(asker: current_user, asked: @@asked, info: info_str)
+    if info_str == ""
+      redirect_to root_path, alert: "Request not valid"
+    elsif !BlockedUser.exists?(blocked: current_user, blocker: asked)
+      Inforequest.create!(asker: current_user, asked: asked, info: info_str)
       redirect_to root_path, notice: "Information successfully sent"
     else
       redirect_to root_path, alert: "User not found"
