@@ -1,7 +1,10 @@
+require 'faker'
+
 FactoryGirl.define do
-  factory :infoasked do
-    asker_id 1 
-    asked 2
-    info "012"
+  factory :inforequest do |f|
+    f.id 100
+    f.asker nil
+    f.asked nil
+    f.info "0 1 2 3 4 5"
   end
 end
