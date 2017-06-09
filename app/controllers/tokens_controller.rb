@@ -22,10 +22,15 @@ class TokensController < ApplicationController
         info_str << @@info.index(info).to_i.to_s << " "
       end
     end
-    #info_str = "0 1 2 3 4 5 6 7 8 9 10 11 12"
     @user = current_user
-    password = ''
     token_hash = SecureRandom.urlsafe_base64(18)
+
+    if params[:password]
+      password = BCrypt::Password.create(params[:password]).to_s
+    else
+      password = ''
+    end
+    byebug
     begin
       @token = @user.tokens.create!(user: @user, password: password, info: info_str, token_hash: token_hash)
       redirect_to user_token_path(@user, @token)
