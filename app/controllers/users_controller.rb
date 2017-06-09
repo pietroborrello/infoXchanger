@@ -26,9 +26,10 @@ class UsersController < ApplicationController
         @token = Token.find_by(token_hash: params[:t])
         if !@token
           raise ActiveRecord::RecordNotFound
-        end
-        if BlockedUser.exists?(blocked: current_user, blocker: @token.user_id)
+        elsif BlockedUser.exists?(blocked: current_user, blocker: @token.user_id)
 			       redirect_to root_path, alert: "You don't have the permission to see this information, maybe the user had blocked you" and return
+        elsif @token.password != '' && !ScannedToken.where(scanner: current_user, token: @token).exists?
+          redirect_to tokens_password_path t: @token.token_hash and return
         end
         @user = User.find(@token.user_id)
         @info = @@info
