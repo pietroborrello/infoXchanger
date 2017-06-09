@@ -28,7 +28,11 @@
               <li><%= link_to 'My Tokens', tokens_mytokens_path%></li>
               <li><%= link_to 'Scanned Tokens', scannedtokens_scanned_path%></li>
               <li><%= link_to 'Who Scanned Me', scannedtokens_whoscannedme_path%></li>
-              <li><%= link_to inforequests_show_path do%> Info Requests <span class="badge">TODO</span> <% end %></li>
+              <li><%= link_to inforequests_show_path do%> Info Requests
+                  <%if current_user.asked.exists?%>
+                    <span class="badge"><%=current_user.asked.length-%></span>
+                  <% end %>
+                <% end %></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><%= link_to users_myprofile_path  do%>
