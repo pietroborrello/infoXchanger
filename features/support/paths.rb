@@ -38,9 +38,6 @@ module NavigationHelpers
     when /^the users_select page$/
 	     users_select_path
 
-    when /^the admin_users_delete page$/
-       '/admin/users/0/delete'
-
     when /^the admin page$/
       '/admin'
 
@@ -48,7 +45,7 @@ module NavigationHelpers
       '/scannedtokens/show'
 
     when /^the user_token page$/
-      user_token_path(@user, 1)
+      user_token_path(@user, @user.tokens.first)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
