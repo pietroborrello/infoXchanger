@@ -357,6 +357,7 @@ PLATFORMS
 
 DEPENDENCIES
   autoprefixer-rails
+  bcrypt
   bootstrap-sass
   bootstrap-social-rails
   byebug

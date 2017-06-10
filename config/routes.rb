@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'scannedtokens/whoscannedme'
   get 'scannedtokens/show'
   get 'tokens/mytokens'
+  get 'tokens/password'
+  post 'tokens/auth'
   get 'blockedusers/show'
   get 'inforequests/show'
   post 'inforequests/reply'

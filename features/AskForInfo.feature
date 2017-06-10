@@ -15,3 +15,6 @@ Scenario: Ask for an info
  And I press "Ask him personal information"
  Then I should be on the inforequests_select page
  And I should see "Select info to ask"
+ When I check "select_all"
+ And I press "Ask"
+ Then I should be on the home page

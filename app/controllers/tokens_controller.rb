@@ -22,16 +22,50 @@ class TokensController < ApplicationController
         info_str << @@info.index(info).to_i.to_s << " "
       end
     end
-    #info_str = "0 1 2 3 4 5 6 7 8 9 10 11 12"
     @user = current_user
-    password = ''
     token_hash = SecureRandom.urlsafe_base64(18)
+
+    if params[:password]
+      password = BCrypt::Password.create(params[:password]).to_s
+    else
+      password = ''
+    end
     begin
       @token = @user.tokens.create!(user: @user, password: password, info: info_str, token_hash: token_hash)
       redirect_to user_token_path(@user, @token)
     rescue ActiveRecord::RecordNotUnique => e
       redirect_to root_path, flash: {:alert => 'Token creation failed, please retry'}
     end
+  end
+
+  def password
+    render 'password', t: params[:t]
+  end
+
+  def auth
+    @token = Token.find_by(token_hash: params[:t])
+    if !@token
+      redirect_to root_path, flash: {:alert => 'Token not valid'}
+    elsif !params[:password] || params[:password][0] == ""
+      redirect_to tokens_password_path(t: params[:t]), flash: {alert: 'You have to insert a password'} and return
+    end
+
+    password = params[:password][0]
+    begin
+      if BCrypt::Password.new(@token.password) != password
+        redirect_to tokens_password_path(t: params[:t]), flash: {alert: 'Wrong Password'} and return
+      end
+      @user = User.find(@token.user_id)
+      if @user != current_user
+        ScannedToken.create(scanner: current_user, scanned: @user, token: @token)
+      end
+      redirect_to users_show_path t: params[:t] and return
+    rescue BCrypt::Errors::InvalidHash => e
+      redirect_to root_path, flash: {:alert => 'broken Token, please contact the administrator'} and return
+    rescue ActiveRecord::RecordNotFound => e
+      redirect_to root_path, flash: {:alert => 'No user found'} and return
+    end
+
   end
 
   def show
