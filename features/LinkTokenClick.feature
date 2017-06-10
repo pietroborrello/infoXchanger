@@ -1,4 +1,4 @@
-Feature: Generate QRToken & LinkToken
+Feature: Access Token
 As a logged user
 So that I can see the info of another user anywhere in the internet
 I want to click on a link that give me access to these info

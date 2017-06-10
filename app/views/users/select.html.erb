@@ -33,7 +33,9 @@
 
 	<label class="li"><%= check_box_tag :height %>&nbsp; <%= "Height: " %></label> <%= current_user.height %><br/>
 
-	<label class="li"><%= check_box_tag :blood_group %>&nbsp; <%= "Blood group: " %></label> <%= current_user.blood_group %><br/>
+	<label class="li"><%= check_box_tag :blood_group %>&nbsp; <%= "Blood group: " %></label> <%= current_user.blood_group %><br/><br/>
+
+	<label class="li"><%= "Protect token with password: (optional)" %><br/><%= text_field_tag :password , '', class: 'form-control'%></label><br/>
 
 	<br>
 	<%= submit_tag "Generate Token", class: "btn btn-primary" %> &nbsp;&nbsp;
