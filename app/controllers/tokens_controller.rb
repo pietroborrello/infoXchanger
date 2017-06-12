@@ -25,7 +25,7 @@ class TokensController < ApplicationController
     @user = current_user
     token_hash = SecureRandom.urlsafe_base64(18)
 
-    if params[:password]
+    if params[:password] && params[:password]!=''
       password = BCrypt::Password.create(params[:password]).to_s
     else
       password = ''

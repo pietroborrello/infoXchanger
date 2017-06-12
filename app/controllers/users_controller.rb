@@ -31,7 +31,7 @@ class UsersController < ApplicationController
         @user = User.find(@token.user_id)
         if BlockedUser.exists?(blocked: current_user, blocker: @token.user_id)
 			       redirect_to root_path, alert: "You don't have the permission to see this information, maybe the user had blocked you" and return
-        elsif @token.password != '' && @user != current_user && !ScannedToken.where(scanner: current_user, token: @token).exists?
+        elsif @token.password && @token.password != '' && @user != current_user && !ScannedToken.where(scanner: current_user, token: @token).exists?
           redirect_to tokens_password_path t: @token.token_hash and return
         end
 
