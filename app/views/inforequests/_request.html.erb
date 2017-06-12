@@ -1,7 +1,7 @@
 <div class='row'>
   <div class='col-sm-2'>
     <% size = '100x100' %>
-    <% if request.asker.image_url %>
+    <% if request.asker.image_url && request.asker.image_url != ''%>
       <%= image_tag(request.asker.image_url, size: size, :alt => "profile image") %><br>
     <% else %>
       <%= image_tag("/images/blank_profile.png", size: size, :alt => "login with Facebook to get an image") %><br>

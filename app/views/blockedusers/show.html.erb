@@ -4,7 +4,7 @@
 	<div class='row'>
 		<div class='col-sm-2 text-center'>
 			<% size = '100x100' %>
-			<% if block.blocked.image_url %>
+			<% if block.blocked.image_url && block.blocked.image_url != ''%>
 				<%= image_tag(block.blocked.image_url, size: size, :alt => "profile image") %><br>
 			<% else %>
 				<%= image_tag("/images/blank_profile.png", size: size, :alt => "login with Facebook to get an image") %><br>
@@ -24,6 +24,3 @@
 <hr/>
 <% end %>
 <%= link_to 'Back', root_path %>
-
-
-
