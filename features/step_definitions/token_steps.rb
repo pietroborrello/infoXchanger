@@ -29,3 +29,7 @@ end
 When /^I visit the token link$/ do
   visit "/?t=fakefakefake"
 end
+
+When /^I visit a wrong token link$/ do
+  visit "/?t=wrongwrongwrong"
+end

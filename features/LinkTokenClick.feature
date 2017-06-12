@@ -9,3 +9,10 @@ Scenario: LinkToken Click
  When I visit the token link
  Then I should be on the users_show page
  And I should see "mario@fake.com"
+
+Scenario: Wrong LinkToken Click
+  Given I am a logged in user
+  And I have a token of mario@fake.com
+  When I visit a wrong token link
+  Then I should be on the home page
+  And I should see "No user found"

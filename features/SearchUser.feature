@@ -11,10 +11,18 @@ Scenario: User found
  Then I should be on the users_search page
  And I should see "user@user.com"
 
- Scenario: User not found
+Scenario: User not found
  Given I am a logged in user
  And I am on the home page
  When I fill in "query_" with "notexistinguser@user.com"
  And I press "Search"
  Then I should be on the home page
  And I should see "No user found"
+
+Scenario: User not found
+  Given I am a logged in user
+  And I am on the home page
+  When I fill in "query_" with "aa"
+  And I press "Search"
+  Then I should be on the home page
+  And I should see "You have to insert at least 3 characters to search for a user"
