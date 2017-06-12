@@ -1,7 +1,7 @@
 
 <div class"row">
   <div class="col-lg-3">
-    <% if @user.image_url %>
+    <% if @user.image_url && @user.image_url != ''%>
       <%= image_tag(@user.image_url, :alt => "profile image") %><br>
     <% else %>
       <%= image_tag("/images/blank_profile.png", :alt => "login with Facebook to get an image") %><br>
@@ -29,7 +29,7 @@
 	<br>
 	<%= button_to "Block this user", user_blockeduser_path(@user.id,@user.id), method: :put , :class => 'btn btn-danger'%>
 	<br>
-    <%= button_to 'Ask him personal information', inforequests_select_path(id: @user.id), :class => 'btn btn-info' %> 
+    <%= button_to 'Ask him personal information', inforequests_select_path(id: @user.id), :class => 'btn btn-info' %>
 	<br>
 	<%end%>
 	<%= link_to 'Home', root_path%>

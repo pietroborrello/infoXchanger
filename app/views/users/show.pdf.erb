@@ -1,6 +1,6 @@
 <br><br>
 <h1><%= @user.first_name + ' ' + @user.last_name%><br></h1>
-<% if @user.image_url %>
+<% if @user.image_url && @user.image_url != ''%>
   <%= image_tag(@user.image_url, :alt => "profile image") %><br>
 <% else %>
   <%= image_tag("/images/blank_profile.png", :alt => "login with Facebook to get an image") %><br>

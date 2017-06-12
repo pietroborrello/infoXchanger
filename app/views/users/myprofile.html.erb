@@ -1,6 +1,6 @@
 <div class"row">
   <div class="col-lg-3">
-  <% if @user.image_url %>
+  <% if @user.image_url && @user.image_url != ''%>
     <%= image_tag(@user.image_url, :alt => "profile image") %><br>
   <% else %>
     <%= image_tag("/images/blank_profile.png", :alt => "login with Facebook to get an image") %><br>
