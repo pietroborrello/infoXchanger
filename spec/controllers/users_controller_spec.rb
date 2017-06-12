@@ -64,6 +64,11 @@ RSpec.describe UsersController, type: :controller do
 				expect(response).to render_template 'search'
 				expect(assigns(:users)).to include(@user)
 			end
+			
+			it "doesn't find the searched user" do
+				get :search, params: {query: ["Larry"]}
+				expect(response).to redirect_to root_path
+			end
 		end
 	end
 end
