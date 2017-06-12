@@ -332,50 +332,16 @@ var QRWebScanner = (function () {
             window.URL.createObjectURL = window.URL.createObjectURL || window.URL.webkitCreateObjectURL || window.URL.mozCreateObjectURL || window.URL.msCreateObjectURL;
 
             var options = true;
-            if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
-            {
-                try{
-                    navigator.mediaDevices.enumerateDevices()
-                    .then(function(devices) {
-                      devices.forEach(function(device) {
-                        if (device.kind === 'videoinput') {
-                          if(device.label.toLowerCase().search("back") >-1)
-                            options={deviceId: {exact: device.deviceId}};
-                        }
-                        console.log(device.kind + ": " + device.label +
-                                    " id = " + device.deviceId);
-                      });
-                      navigator.mediaDevices.getUserMedia({video: options}).then(
-                          function (stream) {
-                              Get.videoBox().src = window.URL.createObjectURL(stream);
-                              Canvas.captureImage(Get.videoBox());
+            navigator.mediaDevices.getUserMedia({video: options}).then(
+                function (stream) {
+                    Get.videoBox().src = window.URL.createObjectURL(stream);
+                    Canvas.captureImage(Get.videoBox());
 
-                              WebCam.state = true;
+                    WebCam.state = true;
 
-                          }).catch(function (error) {
-                              console.log('With the video stream that something is wrong or the user banned :P');
-                          });
-                    })
-                }
-                catch(e)
-                {
-                    console.log(e);
-                }
-            }
-            else{
-                console.log("no navigator.mediaDevices.enumerateDevices" );
-                navigator.mediaDevices.getUserMedia({video: options}).then(
-                    function (stream) {
-
-                        Get.videoBox().src = window.URL.createObjectURL(stream);
-                        Canvas.captureImage(Get.videoBox());
-
-                        WebCam.state = true;
-
-                    }).catch(function (error) {
-                        console.log('With the video stream that something is wrong or the user banned :P');
-                    });
-            }
+                }).catch(function (error) {
+                    console.log('With the video stream that something is wrong or the user banned :P');
+                });
         }
 
     },
