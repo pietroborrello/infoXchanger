@@ -45,7 +45,9 @@
     <br>
   </div>
   <div class='col-sm-2'>
-	<%= button_to "Dismiss this token", user_token_path(token.user_id,token.id), data: { confirm: "Are you sure?" }, method: :delete , :class => 'btn btn-danger'%></p>
+  	<%= button_to "Dismiss this token", user_token_path(token.user_id,token.id), data: { confirm: "Are you sure?" }, method: :delete , :class => 'btn btn-danger'%></p>
+    <br>
+    <%= link_to "Show", user_token_path(current_user, token), class: "btn btn-default"%>
   </div>
 </div>
 <hr/>
