@@ -5,7 +5,7 @@ class ScannedtokensController < ApplicationController
   end
 
   def whoscannedme
-    @tokens = ScannedToken.where(scanned: current_user)
+    @tokens = ScannedToken.where(scanned: current_user).order('created_at desc')
   end
 
   def show

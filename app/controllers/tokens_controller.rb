@@ -82,7 +82,7 @@ class TokensController < ApplicationController
   end
 
   def mytokens
-  	@tokens = Token.where(user: current_user)
+  	@tokens = Token.where(user: current_user).order('created_at desc')
   	@info = @@info
   end
 
