@@ -3,7 +3,7 @@
 <% if @user.image_url && @user.image_url != ''%>
   <%= image_tag(@user.image_url, :alt => "profile image") %><br>
 <% else %>
-  <%= image_tag("/images/blank_profile.png", :alt => "login with Facebook to get an image") %><br>
+  <%= wicked_pdf_image_tag("/images/blank_profile.png", :alt => "login with Facebook to get an image") %><br>
 <% end %>
 <br>
 <strong>First Name:</strong> <%= @user.first_name %><br>
