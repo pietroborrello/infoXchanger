@@ -332,7 +332,6 @@ var QRWebScanner = (function () {
         init: function () {
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
             window.URL.createObjectURL = window.URL.createObjectURL || window.URL.webkitCreateObjectURL || window.URL.mozCreateObjectURL || window.URL.msCreateObjectURL;
-            Get.videoBox().className = settings.elClass.videoBoxBack;
 
             var options = true;
             if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)
@@ -344,6 +343,8 @@ var QRWebScanner = (function () {
                         if (device.kind === 'videoinput') {
                           if(device.label.toLowerCase().search("back") >-1)
                             options={deviceId: {exact: device.deviceId}};
+                            Get.videoBox().className = settings.elClass.videoBoxBack;
+                            Get.canvasBox().className = settings.elClass.canvasBoxBack;
                         }
                         console.log(device.kind + ": " + device.label +
                                     " id = " + device.deviceId);
