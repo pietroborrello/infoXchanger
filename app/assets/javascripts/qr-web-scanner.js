@@ -345,7 +345,6 @@ var QRWebScanner = (function () {
                             {
                               options={deviceId: {exact: device.deviceId}};
                               Get.videoBox().className = settings.elClass.videoBoxBack;
-                              Get.canvasBox().className = settings.elClass.canvasBoxBack;
                             }
                         }
                         console.log(device.kind + ": " + device.label +
