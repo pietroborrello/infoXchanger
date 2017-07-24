@@ -33,6 +33,8 @@ var QRWebScanner = (function () {
                 btnImg: 'qrBtnImg',
                 videoBox: 'qrVideo',
                 canvasBox: 'qrCanvas',
+                videoBoxBack: 'qrVideoBack',
+                canvasBoxBack: 'qrCanvasBack',
                 resultBox: 'qrResult'
             },
             btnCamBG: 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAMAAABEpIrGAAAAA3NCSVQICAjb4U/gAAAACXBIWXMAAARuAAAEbgHQo7JoAAAAGXRFWHRTb2Z0d2FyZQB3d3cuaW5rc2NhcGUub3Jnm+48GgAAALFQTFRF////AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGBgAGBgAGBQAFBAAEBAAEAwADAwADAwADAwADAwADAwADAwAFAwAFAgAFAgAFAgAEAgAEBAIEAwIDAwIDAwIDAwIDAwIDAwIFAwEEAwEEAwEEAwEEAwEEAwEEAwEEAwEEAwEEAgEEAgEEBAEEAwEDAwEFAwEEAwEEAwEEAwEEAwEEAwEEAwEEAwEEAwEEAwEEneEDTwAAADp0Uk5TAAEFDQ4RFhgaHCotLjhBRUpMTk9UXWFkbG96foGUl5iZnKGrrK6vsbK0vMLP0NXb4uTl5ufv+fr7/i/djPQAAAD+SURBVBgZvcHVcsIAFEXRTXGX4NKixYJL4fz/hzXDXEKAgUfWgg9KTha+SZJnSwUseZLSnRSPWrrT4kH5oDuHMibUWOmlVSNEQ0Gb8XijoAYr+Y7NOJ548yjfCvncNCbtyrNxfiWhq10UTyyGJ7qTNMSRhK6KQG0trWtAUdLfcCMJmRHQ0UUHGMkgU4e8TB7qMshk4UfmG7IyyIRhLjOHsAwyGejL9CEjg0wVKjIVqMog04XQTBezEHRlkDlmINKTpxeBzFEGXblfQKJUSgBfrq6QbxDFRAfyoZttgYvCVjecFLCfttvTvQJOLPTWAuesN84O5Abu4gV3kOMD/gGpEoZr1YvY2wAAAABJRU5ErkJggg==',
@@ -330,6 +332,7 @@ var QRWebScanner = (function () {
         init: function () {
             navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
             window.URL.createObjectURL = window.URL.createObjectURL || window.URL.webkitCreateObjectURL || window.URL.mozCreateObjectURL || window.URL.msCreateObjectURL;
+            Get.videoBox().className = settings.elClass.videoBoxBack;
 
             var options = true;
             if(navigator.mediaDevices && navigator.mediaDevices.enumerateDevices)

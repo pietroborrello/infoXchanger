@@ -34,6 +34,14 @@
 .qrCanvas {
     display: none;
 }
+.qrVideoBack,
+.qrCanvasBack {
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+}
+.qrCanvasBack {
+    display: none;
+}
 .qrResult {
     display: block;
     height: auto;
