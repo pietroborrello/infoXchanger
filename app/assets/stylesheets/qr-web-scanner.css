@@ -32,7 +32,7 @@
       -webkit-transform: scaleX(-1);
 }
 .qrCanvas {
-    display: none;
+    /*display: none;*/
 }
 .qrVideoBack,
 .qrCanvasBack {
