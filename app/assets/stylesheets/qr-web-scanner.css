@@ -32,7 +32,7 @@
       -webkit-transform: scaleX(-1);
 }
 .qrCanvas {
-    /*display: none;*/
+    display: none;
 }
 .qrVideoBack,
 .qrCanvasBack {
@@ -40,7 +40,7 @@
     border-radius: 4px;
 }
 .qrCanvasBack {
-    /*display: none;*/
+    display: none;
 }
 .qrResult {
     display: block;
