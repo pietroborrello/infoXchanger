@@ -226,7 +226,7 @@ var QRWebScanner = (function () {
 
                     Get.videoBox().show();
                     Get.labelFile().hide();
-                    Get.canvasBox().hide();
+                    Get.canvasBox().show();
 
                     Get.btnImg().setOpacity(.5);
                     Get.btnCam().setOpacity(.8);
